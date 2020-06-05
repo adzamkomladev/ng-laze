@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-laze"
+    }
+  },
+  "defaultProject": "ng-laze",
+  "cli": {
+    "analytics": "870d6830-c0bc-4b6b-a886-8fbaf5daf443"
+  }
 }
