@@ -115,7 +115,7 @@
     nzType="primary"
     [nzLoading]="isSubmitLoading"
   >
-    <strong>Sign in</strong>
+    <strong>{{ submitState.isSignIn ? 'Sign in' : 'Register' }}</strong>
   </button>
   or
   <a (click)="onToggleSignIn()" class="register-link">

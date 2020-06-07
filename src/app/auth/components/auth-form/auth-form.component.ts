@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SubmitState } from '../../interfaces/submit-state';
-import { AuthFormData } from '../../interfaces/auth-form-data';
+import { AuthCredentials } from 'src/app/core/interfaces/auth-credentials';
 
 @Component({
   selector: 'laze-auth-form',
@@ -13,7 +13,7 @@ export class AuthFormComponent implements OnInit {
   @Input() submitState: SubmitState;
 
   @Output() submitStateChange: EventEmitter<SubmitState>;
-  @Output() submitForm: EventEmitter<AuthFormData>;
+  @Output() submitForm: EventEmitter<AuthCredentials>;
 
   isPasswordVisible: boolean;
   form: FormGroup;
@@ -35,7 +35,7 @@ export class AuthFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.isPasswordVisible = false;
     this.submitStateChange = new EventEmitter<SubmitState>();
-    this.submitForm = new EventEmitter<AuthFormData>();
+    this.submitForm = new EventEmitter<AuthCredentials>();
   }
 
   ngOnInit(): void {
@@ -80,7 +80,7 @@ export class AuthFormComponent implements OnInit {
 
     this.submitStateChange.emit(submitState);
 
-    this.submitForm.emit(this.form.value as AuthFormData);
+    this.submitForm.emit({ ...this.form.value } as AuthCredentials);
   }
 
   private initializeForm(): void {
