@@ -51,19 +51,12 @@ export class AuthComponent implements OnInit {
           console.log('Successful sin up');
         }),
         catchError((error) => {
-          let errorMessage = error?.error?.message;
-
-          if (error.status === 0) {
-            errorMessage =
-              'You have a poor internet connection. Please try again!';
-          }
-
           this.submitState = {
             isSignIn: this.submitState.isSignIn,
             isSubmitting: false,
             hasSubmitted: false,
             hasError: true,
-            errorMessage,
+            errorMessage: error.message,
           };
 
           return error;
@@ -76,29 +69,22 @@ export class AuthComponent implements OnInit {
     this.auth
       .signIn({ ...authCredentials })
       .pipe(
-        tap((_) => {
-          this.submitState = {
-            isSignIn: this.submitState.isSignIn,
-            isSubmitting: false,
-            hasSubmitted: true,
-            hasError: false,
-          };
-          console.log('Successful loin');
-        }),
+        tap(
+          (_) =>
+            (this.submitState = {
+              isSignIn: this.submitState.isSignIn,
+              isSubmitting: false,
+              hasSubmitted: true,
+              hasError: false,
+            }),
+        ),
         catchError((error) => {
-          let errorMessage = error?.error?.message;
-
-          if (error.status === 0) {
-            errorMessage =
-              'You have a poor internet connection. Please try again!';
-          }
-
           this.submitState = {
             isSignIn: this.submitState.isSignIn,
             isSubmitting: false,
             hasSubmitted: false,
             hasError: true,
-            errorMessage,
+            errorMessage: error.message,
           };
 
           return error;

@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
   <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="username" nz-typography
-      ><strong>Username</strong>
+    <nz-form-label [nzSpan]="24" nzFor="username" nz-typography>
+      <strong>Username</strong>
     </nz-form-label>
     <nz-form-control
       nzHasFeedback
@@ -83,7 +83,7 @@
         <label nz-radio-button nzValue="STUDENT">
           <strong>Student</strong>
         </label>
-        <label nz-radio-button nzValue="SERVICE PROVIDER">
+        <label nz-radio-button nzValue="SERVICE_PROVIDER">
           <strong>Service provider</strong>
         </label>
       </nz-radio-group>
@@ -102,7 +102,7 @@
   <nz-alert
     class="auth-form-margin"
     *ngIf="submitState.hasError"
-    nzType="error"
+    nzType="warning"
     nzCloseable
     nzMessage="Authentication error"
     [nzDescription]="submitState?.errorMessage"

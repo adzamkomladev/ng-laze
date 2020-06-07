@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -11,7 +11,14 @@ import { en_US } from 'ng-zorro-antd/i18n';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+
 import { AppComponent } from './app.component';
+
+/** Http interceptor providers in outside-in order */
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+];
 
 registerLocaleData(en);
 
@@ -24,7 +31,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [httpInterceptorProviders, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
