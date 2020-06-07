@@ -13,6 +13,17 @@
   width: 86%;
 }
 
+.form-card > img {
+  display: block;
+  margin: auto;
+}
+
+.pic-container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
 /* media queries */
 
 /* Mobile Landscape Screen Sizes */
