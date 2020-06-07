@@ -1,0 +1,11 @@
+.auth-form-margin {
+  margin-top: 16px;
+}
+
+.auth-form-forgot {
+  float: right;
+}
+
+.sign-in-button {
+  width: 40%;
+}

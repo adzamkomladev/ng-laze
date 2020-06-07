@@ -1,1 +1,17 @@
-<p>auth works!</p>
+<div class="container" nz-row>
+  <div class="form-container" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+    <div class="form-card">
+      <h2 nz-typography>
+        <strong>Authenticate your account</strong>
+      </h2>
+      <laze-auth-form
+        [submitState]="submitState"
+        (submitStateChange)="onSubmitStateChange($event)"
+        (submitForm)="onSubmitForm($event)"
+      ></laze-auth-form>
+    </div>
+  </div>
+  <div class="pic-container" nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="12">
+    Picture
+  </div>
+</div>

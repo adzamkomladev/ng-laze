@@ -1,0 +1,29 @@
+.container {
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9;
+}
+
+.form-container > * {
+  width: 86%;
+}
+
+/* media queries */
+
+/* Mobile Landscape Screen Sizes */
+@media only screen and (min-width: 480px) {
+  .form-container > * {
+    width: 78%;
+  }
+}
+/* Desktop screen Sizes */
+@media only screen and (min-width: 768px) {
+  .form-container > * {
+    width: 58%;
+  }
+}

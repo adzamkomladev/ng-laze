@@ -1,0 +1,124 @@
+<form nz-form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="username" nz-typography
+      ><strong>Username</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="usernameErrorTemplate"
+    >
+      <nz-input-group nzPrefixIcon="user">
+        <input
+          id="username"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="username"
+          placeholder="Your username"
+        />
+      </nz-input-group>
+      <ng-template #usernameErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your username!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('minlength')">
+          Your username must be more than 4 characters!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Your username must be less than 20 characters!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="password" nz-typography>
+      <strong>Password</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="passwordErrorTemplate"
+    >
+      <nz-input-group nzPrefixIcon="lock" [nzSuffix]="passwordSuffixTemplate">
+        <input
+          id="password"
+          [type]="passwordInputType"
+          nz-input
+          nzSize="large"
+          formControlName="password"
+          placeholder="Your password"
+        />
+      </nz-input-group>
+      <ng-template #passwordSuffixTemplate>
+        <i
+          nz-icon
+          [nzType]="passwordIconType"
+          (click)="onTogglePasswordVisibility()"
+        ></i>
+      </ng-template>
+      <ng-template #passwordErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your password!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('minlength')">
+          Your password must be more than 8 characters!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Your password must be less than 20 characters!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('pattern')">
+          Your password should include at least an uppercase letter, numbers and
+          special characters!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="!submitState.isSignIn">
+    <nz-form-label [nzSpan]="24" nzFor="role" nz-typography>
+      <strong>Role</strong>
+    </nz-form-label>
+    <nz-form-control>
+      <nz-radio-group id="role" formControlName="role" nzButtonStyle="solid">
+        <label nz-radio-button nzValue="STUDENT">
+          <strong>Student</strong>
+        </label>
+        <label nz-radio-button nzValue="SERVICE PROVIDER">
+          <strong>Service provider</strong>
+        </label>
+      </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row class="auth-form-margin">
+    <div nz-col [nzSpan]="12">
+      <label nz-checkbox formControlName="remember">
+        <span>Remember me</span>
+      </label>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <a class="auth-form-forgot">Forgot password?</a>
+    </div>
+  </div>
+  <nz-alert
+    class="auth-form-margin"
+    *ngIf="submitState.hasError"
+    nzType="error"
+    nzCloseable
+    nzMessage="Authentication error"
+    [nzDescription]="submitState?.errorMessage"
+  ></nz-alert>
+  <button
+    nz-button
+    class="sign-in-button auth-form-margin"
+    [disabled]="form.invalid"
+    nz-typography
+    nzType="primary"
+    [nzLoading]="isSubmitLoading"
+  >
+    <strong>Sign in</strong>
+  </button>
+  or
+  <a (click)="onToggleSignIn()" class="register-link">
+    {{ submitState.isSignIn ? 'Register' : 'Sign in' }}
+  </a>
+</form>
