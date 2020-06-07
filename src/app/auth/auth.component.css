@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f9;
 }
 
 .form-container > * {
@@ -22,6 +21,7 @@
   display: flex;
   justify-content: center;
   justify-items: center;
+  background-color: #f4f4f9;
 }
 
 /* media queries */
