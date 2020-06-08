@@ -1,0 +1,42 @@
+:host {
+  height: 100vh;
+}
+
+nz-header {
+  z-index: 10;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+nz-header > .logo > img {
+  margin-right: 16px;
+}
+
+nz-header > .logo > span {
+  font-size: larger;
+  text-transform: uppercase;
+}
+
+nz-header,
+nz-footer {
+  background: #ffffff;
+}
+
+nz-footer {
+  line-height: 1.5;
+  text-align: center;
+}
+
+nz-sider {
+  background: #f4f4f9;
+  line-height: 120px;
+}
+
+nz-sider ul.menu-list {
+  padding-top: 24px;
+}
+
+nz-content {
+  background: #ffffff;
+  height: 100%;
+  line-height: 120px;
+}

@@ -1,1 +1,81 @@
-<router-outlet></router-outlet>
+<nz-layout class="layout">
+  <nz-header>
+    <div class="logo">
+      <img src="assets/svg/logo.svg" alt="Laze logo" width="48" />
+      <span typography><strong>Laze</strong></span>
+    </div>
+  </nz-header>
+  <nz-layout>
+    <nz-sider
+      nzWidth="280px"
+      nzCollapsible
+      nzBreakpoint="lg"
+      [nzZeroTrigger]="triggerTemplate"
+      [nzCollapsedWidth]="0"
+    >
+      <ng-template #triggerTemplate>
+        <div [style.background-color]="'#337357'">
+          <i nz-icon nzType="menu"></i>
+        </div>
+      </ng-template>
+      <ul class="menu-list" nz-menu nzMode="inline">
+        <li nz-menu-item nzMatchRouter>
+          <a [routerLink]="['home']">
+            <i nz-icon nzType="home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <i nz-icon nzType="tool"></i>
+          <span>Projects</span>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <i nz-icon nzType="folder-open"></i>
+          <span>My projects</span>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a [routerLink]="['users']">
+            <i nz-icon nzType="team"></i>
+            <span>Users</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <i nz-icon nzType="setting"></i>
+          <span>Settings</span>
+        </li>
+        <li nz-submenu nzTitle="Account" nzIcon="safety" nzOpen>
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <i nz-icon nzType="user"></i>
+              <span>Profile</span>
+            </li>
+            <li nz-menu-item (click)="onSignOut()">
+              <i nz-icon nzType="logout"></i>
+              <span>Sign out</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+  <nz-footer>
+    <p typography>
+      <strong>
+        Made with
+        <i
+          nz-icon
+          nzType="heart"
+          nzTheme="twotone"
+          nzTwotoneColor="#660000"
+        ></i>
+        by
+        <a href="https://github.com/adzamkomladev">kbee</a>
+      </strong>
+    </p>
+  </nz-footer>
+</nz-layout>
