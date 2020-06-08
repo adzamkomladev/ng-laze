@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { tap, catchError } from 'rxjs/operators';
 
@@ -14,7 +15,7 @@ import { AuthCredentials } from '../core/interfaces/auth-credentials';
 export class AuthComponent implements OnInit {
   submitState: SubmitState;
 
-  constructor(private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService) {
     this.submitState = {
       isSignIn: true,
       isSubmitting: false,
@@ -30,7 +31,6 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmitForm(authCredentials: AuthCredentials): void {
-    console.log(this.submitState);
     this.submitState.isSignIn
       ? this.signIn(authCredentials)
       : this.signUp(authCredentials);
@@ -47,8 +47,6 @@ export class AuthComponent implements OnInit {
             hasSubmitted: true,
             hasError: false,
           };
-
-          console.log('Successful sin up');
         }),
         catchError((error) => {
           this.submitState = {
@@ -69,15 +67,16 @@ export class AuthComponent implements OnInit {
     this.auth
       .signIn({ ...authCredentials })
       .pipe(
-        tap(
-          (_) =>
-            (this.submitState = {
-              isSignIn: this.submitState.isSignIn,
-              isSubmitting: false,
-              hasSubmitted: true,
-              hasError: false,
-            }),
-        ),
+        tap((_) => {
+          this.submitState = {
+            isSignIn: this.submitState.isSignIn,
+            isSubmitting: false,
+            hasSubmitted: true,
+            hasError: false,
+          };
+
+          this.router.navigate(['/main']);
+        }),
         catchError((error) => {
           this.submitState = {
             isSignIn: this.submitState.isSignIn,
