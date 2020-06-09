@@ -29,17 +29,23 @@ nz-footer {
 
 nz-sider {
   background: #f4f4f9;
-  line-height: 120px;
 }
 
 nz-sider ul.menu-list {
   padding-top: 24px;
 }
 
+.main-sider {
+  line-height: 120px;
+}
+
 nz-content {
   background: #ffffff;
-  height: 100%;
-  line-height: 120px;
+}
+
+nz-content.loading {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* media queries */
