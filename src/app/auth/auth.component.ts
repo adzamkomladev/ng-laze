@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { tap, catchError } from 'rxjs/operators';
 
@@ -15,7 +15,11 @@ import { AuthCredentials } from '../core/interfaces/auth-credentials';
 export class AuthComponent implements OnInit {
   submitState: SubmitState;
 
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: AuthService,
+  ) {
     this.submitState = {
       isSignIn: true,
       isSubmitting: false,
@@ -75,7 +79,10 @@ export class AuthComponent implements OnInit {
             hasError: false,
           };
 
-          this.router.navigate(['/main']);
+          const routeUrl =
+            this.route.snapshot.queryParamMap.get('returnUrl') ?? '/main';
+
+          this.router.navigateByUrl(routeUrl);
         }),
         catchError((error) => {
           this.submitState = {

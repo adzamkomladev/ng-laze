@@ -32,6 +32,12 @@ export class AuthFormComponent implements OnInit {
     return isSubmitting && !hasSubmitted && !hasError;
   }
 
+  get hasRegistered(): boolean {
+    const { isSignIn, hasSubmitted, hasError } = this.submitState;
+
+    return !isSignIn && hasSubmitted && !hasError;
+  }
+
   constructor(private fb: FormBuilder) {
     this.isPasswordVisible = false;
     this.submitStateChange = new EventEmitter<SubmitState>();

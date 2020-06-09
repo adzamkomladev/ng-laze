@@ -12,12 +12,22 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },
 ];
 
 registerLocaleData(en);

@@ -102,10 +102,18 @@
   <nz-alert
     class="auth-form-margin"
     *ngIf="submitState.hasError"
-    nzType="warning"
+    nzType="error"
     nzCloseable
     nzMessage="Authentication error"
     [nzDescription]="submitState?.errorMessage"
+  ></nz-alert>
+  <nz-alert
+    class="auth-form-margin"
+    *ngIf="hasRegistered"
+    nzType="success"
+    nzCloseable
+    nzMessage="Registration successful"
+    nzDescription="Please wait at least an hour for account confirmation"
   ></nz-alert>
   <button
     nz-button

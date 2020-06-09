@@ -5,4 +5,4 @@ export interface AuthCredentials {
   remember: boolean;
 }
 
-type Role = 'STUDENT' | 'SERVICE PROVIDER';
+type Role = 'STUDENT' | 'SERVICE_PROVIDER';
