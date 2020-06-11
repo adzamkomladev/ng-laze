@@ -1,29 +1,32 @@
-<nz-card
-  [nzCover]="coverTemplate"
-  [nzActions]="[actionEdit, actionView, actionMore]"
->
-  <div class="card-body">
-    <h3 typography>
-      <strong>{{ user?.username }}</strong>
-    </h3>
-    <p>
-      <a href="tel:{{ user?.telephone }}">
-        <i nz-icon nzType="phone"></i>
-        {{ user?.telephone || 'N/A' }}
-      </a>
-    </p>
-    <p>
-      <a href="mailto:{{ user?.email }}">
-        <i nz-icon nzType="mail"></i>
-        {{ user?.email || 'N/A' }}
-      </a>
-    </p>
-    <p>
-      {{ user?.careerDetails || 'N/A' }}
-    </p>
-    <nz-tag nzColor="#337357">{{ user?.role | titlecase }}</nz-tag>
-  </div>
-</nz-card>
+<nz-spin [nzSpinning]="showLoader && isSubmitting" nzTip="Loading...">
+  <nz-card
+    [nzCover]="coverTemplate"
+    [nzActions]="[actionEdit, actionView, actionMore]"
+  >
+    <div class="card-body">
+      <h3 typography>
+        <strong>{{ user?.username }}</strong>
+      </h3>
+      <p>
+        <a href="tel:{{ user?.telephone }}">
+          <i nz-icon nzType="phone"></i>
+          {{ user?.telephone || 'N/A' }}
+        </a>
+      </p>
+      <p>
+        <a href="mailto:{{ user?.email }}">
+          <i nz-icon nzType="mail"></i>
+          {{ user?.email || 'N/A' }}
+        </a>
+      </p>
+      <p>
+        {{ user?.careerDetails || 'N/A' }}
+      </p>
+      <nz-tag nzColor="#337357">{{ user?.role | titlecase }}</nz-tag>
+    </div>
+  </nz-card>
+</nz-spin>
+
 <ng-template #coverTemplate>
   <img alt="{{ user?.username }}'s profile image" [src]="profileImageUrl" />
 </ng-template>
@@ -45,8 +48,12 @@
     </i>
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item (click)="onAction('APPROVE')">Approve</li>
-        <li nz-menu-item (click)="onAction('MAKE_ADMIN')">Make admin</li>
+        <li nz-menu-item (click)="onAction('APPROVE')">
+          {{ user?.approved ? 'Disapprove' : 'Approve' }}
+        </li>
+        <li *ngIf="!isAdmin" nz-menu-item (click)="onAction('MAKE_ADMIN')">
+          Make admin
+        </li>
       </ul>
     </nz-dropdown-menu>
   </div>

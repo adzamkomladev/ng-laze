@@ -10,6 +10,7 @@
     *ngFor="let user of users"
     [user]="user"
     [currentUser]="currentUser"
+    [hasSubmitted]="hasSubmitted"
     (cardAction)="onCardAction($event, user)"
     nz-col
     nzXs="24"

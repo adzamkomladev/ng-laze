@@ -21,4 +21,9 @@ export class UserService {
       .get<User[]>(this.usersBaseUrl)
       .pipe(tap((u) => console.log({ u })));
   }
+
+  update(updateData: Partial<User>): Observable<void> {
+    const updateUserUrl = `${this.usersBaseUrl}/${updateData.id}`;
+    return this.http.patch<void>(updateUserUrl, { ...updateData });
+  }
 }

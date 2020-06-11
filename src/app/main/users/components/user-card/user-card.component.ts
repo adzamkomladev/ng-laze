@@ -12,10 +12,16 @@ import { CardAction } from '../../types/card-action.type';
 export class UserCardComponent implements OnInit {
   @Input() user: User;
   @Input() currentUser: User;
+  @Input() set hasSubmitted(value: boolean) {
+      this.showLoader = !value && this.isSubmitting;
+      this.isSubmitting = this.showLoader;
+  }
 
   @Output() cardAction: EventEmitter<CardAction>;
 
   profileImageUrl: string;
+  isSubmitting: boolean;
+  showLoader: boolean;
 
   get isAdmin(): boolean {
     return this.currentUser?.role === 'ADMIN';
@@ -36,6 +42,7 @@ export class UserCardComponent implements OnInit {
   }
 
   onAction(userCardAction: CardAction): void {
+    this.isSubmitting = this.showLoader = true;
     this.cardAction.emit(userCardAction);
   }
 }
