@@ -10,6 +10,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { UserService } from './services/user.service';
 import { UsersResolverService } from './services/users-resolver.service';
+import { CurrentUserResolverService } from './services/current-user-resolver.service';
 
 import { MainComponent } from './main.component';
 
@@ -23,6 +24,6 @@ import { MainComponent } from './main.component';
     NzIconModule,
     NzSpinModule,
   ],
-  providers: [UserService, UsersResolverService],
+  providers: [UserService, UsersResolverService, CurrentUserResolverService],
 })
 export class MainModule {}

@@ -1,7 +1,21 @@
-<p>users works!</p>
-
-<ul>
-  <li *ngFor="let user of users">
-    {{ user | json }}
-  </li>
-</ul>
+<nz-page-header
+  class="site-page-header"
+  nzBackIcon
+  nzTitle="Users"
+  nzSubtitle="All users of the system"
+>
+</nz-page-header>
+<div nz-row class="user-cards">
+  <laze-user-card
+    *ngFor="let user of users"
+    [user]="user"
+    [currentUser]="currentUser"
+    (cardAction)="onCardAction($event, user)"
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="9"
+    nzLg="10"
+    nzXl="7"
+  ></laze-user-card>
+</div>

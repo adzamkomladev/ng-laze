@@ -31,7 +31,8 @@ nz-sider {
   background: #f4f4f9;
 }
 
-nz-sider ul.menu-list {
+nz-sider ul.menu-list,
+.inner-content {
   padding-top: 24px;
 }
 
@@ -46,6 +47,10 @@ nz-content {
 nz-content.loading {
   text-align: center;
   background: rgba(0, 0, 0, 0.05);
+}
+
+nz-content > .inner-content {
+  padding: 4%;
 }
 
 /* media queries */
