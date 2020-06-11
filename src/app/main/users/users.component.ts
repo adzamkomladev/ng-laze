@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import {catchError, finalize, tap} from 'rxjs/operators';
+import { catchError, finalize, tap } from 'rxjs/operators';
 
 import { NzMessageService } from 'ng-zorro-antd';
 
@@ -18,6 +18,7 @@ import { CardAction } from './types/card-action.type';
 })
 export class UsersComponent implements OnInit {
   users: User[];
+  usersToDisplay: User[];
   currentUser: User;
   hasSubmitted: boolean;
 
@@ -33,6 +34,16 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.route.snapshot.data['users'];
     this.currentUser = this.route.snapshot.data['currentUser'];
+    this.onPageIndexChange(1);
+  }
+
+  onPageIndexChange(page: number): void {
+    const numberPerPage = 10;
+
+    const startIndex = numberPerPage * (page - 1);
+    const endIndex = numberPerPage * page;
+
+    this.usersToDisplay = this.users.slice(startIndex, endIndex);
   }
 
   onCardAction(cardAction: CardAction, user: User): void {
@@ -70,13 +81,16 @@ export class UsersComponent implements OnInit {
 
           return error as any;
         }),
-         finalize(() => this.hasSubmitted = true)
+        finalize(() => (this.hasSubmitted = true)),
       )
       .subscribe();
   }
 
   private approveUser(user: User): void {
-    const updateData: Partial<User> = { id: user.id, approved: !user?.approved };
+    const updateData: Partial<User> = {
+      id: user.id,
+      approved: !user?.approved,
+    };
 
     this.userService
       .update(updateData)
@@ -87,7 +101,7 @@ export class UsersComponent implements OnInit {
 
           return error as any;
         }),
-          finalize(() => this.hasSubmitted = true)
+        finalize(() => (this.hasSubmitted = true)),
       )
       .subscribe();
   }

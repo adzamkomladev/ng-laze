@@ -10,13 +10,14 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 import { UsersResolverService } from '../services/users-resolver.service';
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 
 import { UsersComponent } from './users.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
-import {NzSpinModule} from "ng-zorro-antd";
 
 @NgModule({
   declarations: [UsersComponent, UserCardComponent],
@@ -41,6 +42,7 @@ import {NzSpinModule} from "ng-zorro-antd";
     NzDropDownModule,
     NzMessageModule,
     NzSpinModule,
+    NzPaginationModule,
   ],
 })
 export class UsersModule {}

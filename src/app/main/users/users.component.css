@@ -10,6 +10,10 @@ nz-page-header {
   margin-bottom: 24px;
 }
 
+nz-pagination {
+  text-align: center;
+}
+
 /* media queries */
 
 /* Small devices (landscape phones, 576px and up) */

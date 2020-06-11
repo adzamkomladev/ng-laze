@@ -20,3 +20,8 @@
     nzXl="7"
   ></laze-user-card>
 </div>
+<nz-pagination
+  [nzPageIndex]="1"
+  [nzTotal]="users.length"
+  (nzPageIndexChange)="onPageIndexChange($event)"
+></nz-pagination>
