@@ -13,17 +13,19 @@ import { UsersResolverService } from './services/users-resolver.service';
 import { CurrentUserResolverService } from './services/current-user-resolver.service';
 
 import { MainComponent } from './main.component';
+import {NzAffixModule} from "ng-zorro-antd";
 
 @NgModule({
   declarations: [MainComponent],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    NzLayoutModule,
-    NzMenuModule,
-    NzIconModule,
-    NzSpinModule,
-  ],
+    imports: [
+        CommonModule,
+        MainRoutingModule,
+        NzLayoutModule,
+        NzMenuModule,
+        NzIconModule,
+        NzSpinModule,
+        NzAffixModule,
+    ],
   providers: [UserService, UsersResolverService, CurrentUserResolverService],
 })
 export class MainModule {}
