@@ -7,7 +7,7 @@
 </nz-page-header>
 <div nz-row class="user-cards">
   <laze-user-card
-    *ngFor="let user of users"
+    *ngFor="let user of usersToDisplay"
     [user]="user"
     [currentUser]="currentUser"
     [hasSubmitted]="hasSubmitted"
