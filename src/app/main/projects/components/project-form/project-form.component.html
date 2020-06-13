@@ -1,0 +1,80 @@
+<form nz-form [formGroup]="form" class="auth-form">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="title" nz-typography>
+      <strong>Title</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="titleErrorTemplate"
+    >
+      <input
+        id="title"
+        type="text"
+        nz-input
+        nzSize="large"
+        formControlName="title"
+        placeholder="Project title"
+      />
+      <ng-template #titleErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input project title!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Project title must be less than 255 characters!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="details" nz-typography>
+      <strong>Details</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="detailsErrorTemplate"
+    >
+      <textarea
+        id="details"
+        nz-input
+        rows="4"
+        formControlName="details"
+        placeholder="Project details"
+      ></textarea>
+
+      <ng-template #detailsErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input project details!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="deadline" nz-typography>
+      <strong>Deadline</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="deadlineErrorTemplate"
+    >
+      <nz-date-picker id="deadline" formControlName="deadline"></nz-date-picker>
+      <ng-template #deadlineErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your deadline!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
+      <strong>File</strong>
+    </nz-form-label>
+    <nz-form-control>
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+        <button nz-button><i nz-icon nzType="upload"></i>Select File</button>
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+</form>

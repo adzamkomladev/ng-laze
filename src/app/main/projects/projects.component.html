@@ -1,0 +1,23 @@
+<nz-page-header
+  class="site-page-header"
+  nzBackIcon
+  nzTitle="Projects"
+  nzSubtitle="All available projects"
+>
+</nz-page-header>
+<div class="new-button-wrapper">
+  <button nz-button nzType="primary" (click)="onOpenModal()">
+    <i nz-icon nzType="plus"></i> New project
+  </button>
+</div>
+<div nz-row class="project-cards"></div>
+
+<nz-modal
+  [(nzVisible)]="isModalVisible"
+  nzTitle="Create new project"
+  (nzOnCancel)="onCancel()"
+  (nzOnOk)="onSaveProject()"
+  [nzOkLoading]="isSaveLoading"
+>
+  <laze-project-form *ngIf="isModalVisible"></laze-project-form>
+</nz-modal>

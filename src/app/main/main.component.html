@@ -26,8 +26,10 @@
           </a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <i nz-icon nzType="tool"></i>
-          <span>Projects</span>
+          <a [routerLink]="['projects']">
+            <i nz-icon nzType="tool"></i>
+            <span>Projects</span>
+          </a>
         </li>
         <li nz-menu-item nzMatchRouter>
           <i nz-icon nzType="folder-open"></i>
