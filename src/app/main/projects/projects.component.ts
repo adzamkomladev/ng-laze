@@ -18,6 +18,8 @@ export class ProjectsComponent implements OnInit {
   isSaveLoading: boolean;
   errorMessage?: string;
   currentUser: User;
+  projects: Project[];
+  projectsToDisplay: Project[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +32,17 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.route.snapshot.data['currentUser'];
+    this.projects = this.route.snapshot.data['projects'];
+    this.onPageIndexChange(1);
+  }
+
+  onPageIndexChange(page: number): void {
+    const numberPerPage = 10;
+
+    const startIndex = numberPerPage * (page - 1);
+    const endIndex = numberPerPage * page;
+
+    this.projectsToDisplay = this.projects.slice(startIndex, endIndex);
   }
 
   onOpenModal(): void {

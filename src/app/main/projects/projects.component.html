@@ -10,7 +10,17 @@
     <i nz-icon nzType="plus"></i> New project
   </button>
 </div>
-<div nz-row class="project-cards"></div>
+<div nz-row class="project-cards">
+  <laze-project-card
+    *ngFor="let project of projectsToDisplay"
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="11"
+    nzLg="11"
+    nzXl="11"
+  ></laze-project-card>
+</div>
 
 <nz-modal
   [(nzVisible)]="isModalVisible"
@@ -20,12 +30,12 @@
   [nzOkLoading]="isSaveLoading"
 >
   <nz-alert
-          class="auth-form-margin"
-          *ngIf="errorMessage"
-          nzType="error"
-          nzCloseable
-          nzMessage="Project creation error"
-          [nzDescription]="errorMessage"
+    class="auth-form-margin"
+    *ngIf="errorMessage"
+    nzType="error"
+    nzCloseable
+    nzMessage="Project creation error"
+    [nzDescription]="errorMessage"
   ></nz-alert>
   <laze-project-form *ngIf="isModalVisible"></laze-project-form>
 </nz-modal>

@@ -12,15 +12,18 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { ProjectFormService } from './services/project-form.service';
+import { ProjectsResolverService } from '../services/projects-resolver.service';
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 
 import { ProjectsComponent } from './projects.component';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
-  declarations: [ProjectsComponent, ProjectFormComponent],
+  declarations: [ProjectsComponent, ProjectFormComponent, ProjectCardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -28,6 +31,7 @@ import { ProjectFormComponent } from './components/project-form/project-form.com
         path: '',
         component: ProjectsComponent,
         resolve: {
+          projects: ProjectsResolverService,
           currentUser: CurrentUserResolverService,
         },
       },
@@ -43,6 +47,7 @@ import { ProjectFormComponent } from './components/project-form/project-form.com
     NzUploadModule,
     NzInputModule,
     NzAlertModule,
+    NzCardModule,
   ],
   providers: [ProjectFormService],
 })

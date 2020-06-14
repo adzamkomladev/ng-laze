@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { ProjectService } from './services/project.service';
 import { UsersResolverService } from './services/users-resolver.service';
 import { CurrentUserResolverService } from './services/current-user-resolver.service';
+import { ProjectsResolverService } from './services/projects-resolver.service';
 
 import { MainComponent } from './main.component';
 
@@ -29,6 +30,7 @@ import { MainComponent } from './main.component';
     UserService,
     ProjectService,
     UsersResolverService,
+    ProjectsResolverService,
     CurrentUserResolverService,
   ],
 })

@@ -1,7 +1,11 @@
+import { User } from '../../core/interfaces/user';
+
 export interface Project {
   id: number;
   ownerId: number;
+  owner?: User;
   assigneeId?: number;
+  assignee?: User;
   title: string;
   details: string;
   deadline: Date;
