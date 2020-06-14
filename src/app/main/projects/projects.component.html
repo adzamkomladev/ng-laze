@@ -19,5 +19,13 @@
   (nzOnOk)="onSaveProject()"
   [nzOkLoading]="isSaveLoading"
 >
+  <nz-alert
+          class="auth-form-margin"
+          *ngIf="errorMessage"
+          nzType="error"
+          nzCloseable
+          nzMessage="Project creation error"
+          [nzDescription]="errorMessage"
+  ></nz-alert>
   <laze-project-form *ngIf="isModalVisible"></laze-project-form>
 </nz-modal>

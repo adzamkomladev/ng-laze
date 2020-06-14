@@ -11,8 +11,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 import { ProjectFormService } from './services/project-form.service';
+import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 
 import { ProjectsComponent } from './projects.component';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
@@ -21,17 +23,26 @@ import { ProjectFormComponent } from './components/project-form/project-form.com
   declarations: [ProjectsComponent, ProjectFormComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: ProjectsComponent }]),
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ProjectsComponent,
+        resolve: {
+          currentUser: CurrentUserResolverService,
+        },
+      },
+    ]),
+    FormsModule,
+    ReactiveFormsModule,
     NzIconModule,
     NzPageHeaderModule,
     NzButtonModule,
     NzModalModule,
     NzDatePickerModule,
-    FormsModule,
-    ReactiveFormsModule,
     NzFormModule,
     NzUploadModule,
     NzInputModule,
+    NzAlertModule,
   ],
   providers: [ProjectFormService],
 })
