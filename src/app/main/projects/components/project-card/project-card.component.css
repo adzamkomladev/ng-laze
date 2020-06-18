@@ -1,0 +1,15 @@
+nz-card {
+  box-shadow: 0 2px 2px #bababa;
+}
+
+.price {
+  text-align: right;
+}
+
+.owner-info {
+  text-align: left;
+}
+
+button {
+  margin-right: 12px;
+}

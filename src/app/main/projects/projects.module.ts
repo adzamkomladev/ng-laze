@@ -13,6 +13,9 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 import { ProjectFormService } from './services/project-form.service';
 import { ProjectsResolverService } from '../services/projects-resolver.service';
@@ -48,6 +51,9 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     NzInputModule,
     NzAlertModule,
     NzCardModule,
+    NzTagModule,
+    NzAvatarModule,
+    NzToolTipModule,
   ],
   providers: [ProjectFormService],
 })
