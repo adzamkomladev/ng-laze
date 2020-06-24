@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://nest-laze.herokuapp.com/v1',
+  filestackApiKey: 'AWGiGTsD9SnDckR6H8erIz',
 };
 
 /*

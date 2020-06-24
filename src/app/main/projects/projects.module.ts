@@ -17,6 +17,8 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
+import {FilestackModule} from "@filestack/angular";
+
 import { ProjectFormService } from './services/project-form.service';
 import { ProjectsResolverService } from '../services/projects-resolver.service';
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
@@ -54,6 +56,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     NzTagModule,
     NzAvatarModule,
     NzToolTipModule,
+    FilestackModule,
   ],
   providers: [ProjectFormService],
 })

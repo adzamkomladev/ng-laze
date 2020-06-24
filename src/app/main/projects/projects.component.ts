@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { catchError, finalize, tap } from 'rxjs/operators';
+import { catchError, concatMap, delay, tap } from 'rxjs/operators';
+
+import { FilestackService } from '@filestack/angular';
+import { InputFile } from 'filestack-js';
 
 import { ProjectService } from '../services/project.service';
 import { ProjectFormService } from './services/project-form.service';
+
+import { environment } from '../../../environments/environment';
 
 import { Project } from '../interfaces/project';
 import { User } from '../../core/interfaces/user';
@@ -23,7 +28,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-
+    private filestackService: FilestackService,
     private projectsService: ProjectService,
     private projectFormService: ProjectFormService,
   ) {
@@ -34,6 +39,7 @@ export class ProjectsComponent implements OnInit {
     this.currentUser = this.route.snapshot.data['currentUser'];
     this.projects = this.route.snapshot.data['projects'];
     this.onPageIndexChange(1);
+    this.filestackService.init(environment.filestackApiKey);
   }
 
   onPageIndexChange(page: number): void {
@@ -49,7 +55,7 @@ export class ProjectsComponent implements OnInit {
     this.isModalVisible = true;
   }
 
-  onSaveProject(): void {
+  onSaveProject() {
     this.errorMessage = null;
 
     if (!this.projectFormService.getFormValidity()) {
@@ -63,18 +69,34 @@ export class ProjectsComponent implements OnInit {
       ownerId: this.currentUser.id,
     };
 
-    this.projectsService
-      .create(createData)
+    let submitStream = this.projectsService.create(createData);
+
+    if (this.projectFormService.getFormValue().file) {
+      submitStream = this.filestackService
+        .upload(
+          (this.projectFormService.getFormValue().file as unknown) as InputFile,
+        )
+        .pipe(
+          concatMap((response: any) => {
+            createData.fileUrl = response.url;
+
+            return this.projectsService.create(createData);
+          }),
+        );
+    }
+
+    submitStream
       .pipe(
         tap((project) => {
           console.log({ project });
+          this.isSaveLoading = false;
         }),
+        delay(500),
+        tap((_) => this.onCancel()),
         catchError((error) => {
           this.errorMessage = error.message;
-          return error;
-        }),
-        finalize(() => {
           this.isSaveLoading = false;
+          return error;
         }),
       )
       .subscribe();
