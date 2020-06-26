@@ -1,1 +1,28 @@
-<p>landing works!</p>
+<div class="top-container">
+  <nav nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
+    <div nz-col>
+      <img src="assets/svg/logo.svg" alt="Video call" width="48" />
+    </div>
+    <button nz-col nz-button nzType="primary" [routerLink]="['/auth']">
+      Sign up / Sign in
+    </button>
+  </nav>
+  <div class="jumbotron-container" nz-row>
+    <div class="pic-container" nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="10">
+      <img src="assets/svg/coloured-logo.svg" alt="Video call" width="72%" />
+    </div>
+    <div class="text-container" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="14">
+      <p nz-typography>
+        <strong>
+          Perfect platform to obtain help on your <span>project work</span>
+        </strong>
+      </p>
+      <p>
+        Members can also sign on as a service provider instead of as a student
+      </p>
+      <div>
+        <img src="assets/svg/book.svg" alt="Open book" width="24%" />
+      </div>
+    </div>
+  </div>
+</div>
