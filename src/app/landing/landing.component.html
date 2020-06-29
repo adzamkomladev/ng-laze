@@ -188,3 +188,46 @@
     </table>
   </div>
 </div>
+<div
+  nz-row
+  nzType="flex"
+  nzJustify="space-around"
+  nzAlign="middle"
+  class="newsletter-container"
+>
+  <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="10">
+    <p>Start your free trial today</p>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, voluptatem
+      corrupti dolorum nisi vero, qui unde ipsum delectus distinctio mollitia
+      impedit cumque nesciunt incidunt similique autem voluptatum blanditiis sit
+      quo.
+    </p>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="10">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group [nzPrefix]="emailPrefixTemplate">
+          <input
+            id="email"
+            type="email"
+            nz-input
+            nzSize="large"
+            formControlName="email"
+            placeholder="Your email"
+          />
+        </nz-input-group>
+        <ng-template #emailPrefixTemplate>
+          <i
+            nz-icon
+            nzType="mail"
+            nzTheme="outline"
+            [style.font-size]="'24px'"
+            [style.margin-top]="'16px'"
+          ></i>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
+<footer></footer>

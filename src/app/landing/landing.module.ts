@@ -6,6 +6,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { LandingComponent } from './landing.component';
 
@@ -18,6 +19,7 @@ import { LandingComponent } from './landing.component';
     NzButtonModule,
     NzGridModule,
     NzIconModule,
+    NzInputModule,
   ],
 })
 export class LandingModule {}
