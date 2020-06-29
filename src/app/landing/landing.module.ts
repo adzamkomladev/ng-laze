@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { LandingComponent } from './landing.component';
 
@@ -16,6 +17,7 @@ import { LandingComponent } from './landing.component';
     NzLayoutModule,
     NzButtonModule,
     NzGridModule,
+    NzIconModule,
   ],
 })
 export class LandingModule {}
