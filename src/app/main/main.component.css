@@ -36,9 +36,9 @@ nz-sider ul.menu-list,
   padding-top: 24px;
 }
 
-.main-sider {
+/* .main-sider {
   line-height: 120px;
-}
+} */
 
 nz-content {
   background: #ffffff;
@@ -49,7 +49,7 @@ nz-content.loading {
   background: rgba(0, 0, 0, 0.05);
 }
 
-nz-content > .inner-content {
+nz-content .inner-content {
   padding: 4%;
 }
 

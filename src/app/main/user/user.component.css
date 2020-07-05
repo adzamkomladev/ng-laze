@@ -1,0 +1,66 @@
+nz-page-header {
+  margin-bottom: 24px;
+}
+
+.info-text > span {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.info-text > div {
+  margin-bottom: 24px;
+}
+
+.info-text > div > i {
+  margin-right: 12px;
+}
+
+.info-text > div,
+.info-text > p {
+  font-size: 16px;
+}
+
+.info-card {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.info-card > i {
+  margin-right: 14px;
+  font-size: 36px;
+}
+
+.info-card > div > span:first-of-type {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.info-card > div > span:last-of-type {
+  font-size: 14px;
+  color: rgb(138, 136, 136);
+}
+
+/* media queries */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .top-details {
+    justify-content: start;
+  }
+  .info-text {
+    margin-left: 18px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
