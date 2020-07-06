@@ -13,6 +13,7 @@ import { ProjectService } from './services/project.service';
 import { UsersResolverService } from './services/users-resolver.service';
 import { CurrentUserResolverService } from './services/current-user-resolver.service';
 import { ProjectsResolverService } from './services/projects-resolver.service';
+import { UserResolverService } from './services/user-resolver.service';
 
 import { MainComponent } from './main.component';
 
@@ -32,6 +33,7 @@ import { MainComponent } from './main.component';
     UsersResolverService,
     ProjectsResolverService,
     CurrentUserResolverService,
+    UserResolverService,
   ],
 })
 export class MainModule {}

@@ -18,10 +18,12 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { FilestackModule } from '@filestack/angular';
 
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
+import { UserResolverService } from '../services/user-resolver.service';
+
+import { AgePipe } from './pipes/age.pipe';
 
 import { UserComponent } from './user.component';
 import { EditUserFormComponent } from './components/edit-user-form/edit-user-form.component';
-import { AgePipe } from './pipes/age.pipe';
 
 @NgModule({
   declarations: [UserComponent, EditUserFormComponent, AgePipe],
@@ -33,6 +35,7 @@ import { AgePipe } from './pipes/age.pipe';
         component: UserComponent,
         resolve: {
           currentUser: CurrentUserResolverService,
+          selectedUser: UserResolverService,
         },
       },
     ]),

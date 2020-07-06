@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   isSaveLoading: boolean;
   errorMessage?: string;
   currentUser: User;
+  selectedUser;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.route.snapshot.data['currentUser'];
+    this.selectedUser = this.route.snapshot.data['selectedUser'];
 
     this.filestackService.init(environment.filestackApiKey);
   }

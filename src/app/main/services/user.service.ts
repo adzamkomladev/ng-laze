@@ -22,6 +22,12 @@ export class UserService {
       .pipe(tap((u) => console.log({ u })));
   }
 
+  findOneById(id: number): Observable<User> {
+    return this.http
+      .get<User>(`${this.usersBaseUrl}/${id}`)
+      .pipe(tap((uu) => console.log({ uu })));
+  }
+
   update(updateData: Partial<User>): Observable<void> {
     const updateUserUrl = `${this.usersBaseUrl}/${updateData.id}`;
     return this.http.patch<void>(updateUserUrl, { ...updateData });

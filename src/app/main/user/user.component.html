@@ -14,7 +14,7 @@
     nzLg="8"
     nzXl="6"
     [nzSrc]="
-      currentUser?.profileImageUrl ||
+      selectedUser?.profileImageUrl ||
       'https://agentestudio.com/uploads/ckeditor/pictures/1567/content_user-profile-design-14.jpg'
     "
   ></nz-avatar>
@@ -27,12 +27,12 @@
     nzLg="10"
     nzXl="10"
   >
-    <span nz-typography>{{ currentUser?.fullName || 'N/A' }}</span>
+    <span nz-typography>{{ selectedUser?.fullName || 'N/A' }}</span>
     <div>
       <i nz-icon nzType="mail" nzTheme="outline"></i>
-      <span nz-typography>{{ currentUser?.email || 'N/A' }}</span>
+      <span nz-typography>{{ selectedUser?.email || 'N/A' }}</span>
     </div>
-    <p nz-typography>{{ currentUser?.careerDetails || 'N/A' }}</p>
+    <p nz-typography>{{ selectedUser?.careerDetails || 'N/A' }}</p>
   </div>
 </div>
 <div nz-row>
@@ -40,21 +40,21 @@
     <i nz-icon nzType="phone" nzTheme="outline"></i>
     <div nz-typography>
       <span>Telephone</span><br />
-      <span>{{ currentUser?.telephone || 'N/A' }}</span>
+      <span>{{ selectedUser?.telephone || 'N/A' }}</span>
     </div>
   </div>
   <div class="info-card" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4" nzXl="5">
     <i nz-icon nzType="user" nzTheme="outline"></i>
     <div nz-typography>
       <span>Age</span><br />
-      <span>{{ currentUser?.dateOfBirth | age }}</span>
+      <span>{{ selectedUser?.dateOfBirth | age }}</span>
     </div>
   </div>
   <div class="info-card" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4" nzXl="5">
     <i nz-icon nzType="safety-certificate" nzTheme="outline"></i>
     <div nz-typography>
       <span>Role</span><br />
-      <span>{{ currentUser?.role | titlecase }}</span>
+      <span>{{ selectedUser?.role | titlecase }}</span>
     </div>
   </div>
   <div class="info-card" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4" nzXl="5">
@@ -73,7 +73,10 @@
       </ng-template>
       All projects
     </nz-tab>
-    <nz-tab [nzTitle]="titleTemplateTwo">
+    <nz-tab
+      *ngIf="currentUser.id === selectedUser.id"
+      [nzTitle]="titleTemplateTwo"
+    >
       <ng-template #titleTemplateTwo>
         <i nz-icon nzType="edit"></i> Edit profile
       </ng-template>
@@ -87,7 +90,7 @@
           nzXl="12"
           [errorMessage]="errorMessage"
           [isSaveLoading]="isSaveLoading"
-          [user]="currentUser"
+          [user]="selectedUser"
           (submitForm)="onSubmit($event)"
         ></laze-edit-user-form>
       </div>
