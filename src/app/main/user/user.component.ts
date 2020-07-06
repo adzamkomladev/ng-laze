@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { concatMap, tap, catchError } from 'rxjs/operators';
+
+import { FilestackService } from '@filestack/angular';
+import { InputFile } from 'filestack-js';
+
+import { environment } from 'src/environments/environment';
+
+import { UserService } from '../services/user.service';
+
 import { User } from 'src/app/core/interfaces/user';
 import { EditUser } from './interfaces/edit-user';
 
@@ -13,54 +22,55 @@ export class UserComponent implements OnInit {
   errorMessage?: string;
   currentUser: User;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private filestackService: FilestackService,
+    private userService: UserService,
+  ) {}
 
   ngOnInit(): void {
     this.currentUser = this.route.snapshot.data['currentUser'];
+
+    this.filestackService.init(environment.filestackApiKey);
   }
 
   onSubmit(formData: EditUser) {
     this.errorMessage = null;
-
     this.isSaveLoading = true;
 
     console.log({ formData });
 
-    // const createData: Partial<User> = {
-    //   ...this.userFormService.getFormValue(),
-    //   ownerId: this.currentUser.id,
-    // };
+    const updateData: Partial<User> = {
+      ...formData,
+      id: this.currentUser.id,
+    };
 
-    // let submitStream = this.usersService.create(createData);
+    let submitStream = this.userService.update(updateData);
 
-    // if (this.userFormService.getFormValue().file) {
-    //   submitStream = this.filestackService
-    //     .upload(
-    //       (this.userFormService.getFormValue().file as unknown) as InputFile,
-    //     )
-    //     .pipe(
-    //       concatMap((response: any) => {
-    //         createData.fileUrl = response.url;
+    if (formData.file) {
+      submitStream = this.filestackService
+        .upload((formData.file as unknown) as InputFile)
+        .pipe(
+          concatMap((response: any) => {
+            updateData.profileImageUrl = response.url;
 
-    //         return this.usersService.create(createData);
-    //       }),
-    //     );
-    // }
+            return this.userService.update(updateData);
+          }),
+        );
+    }
 
-    // submitStream
-    //   .pipe(
-    //     tap((user) => {
-    //       console.log({ user });
-    //       this.isSaveLoading = false;
-    //     }),
-    //     delay(500),
-    //     tap((_) => this.onCancel()),
-    //     catchError((error) => {
-    //       this.errorMessage = error.message;
-    //       this.isSaveLoading = false;
-    //       return error;
-    //     }),
-    //   )
-    //   .subscribe();
+    submitStream
+      .pipe(
+        tap((_) => {
+          this.currentUser = { ...this.currentUser, ...updateData };
+          this.isSaveLoading = false;
+        }),
+        catchError((error) => {
+          this.errorMessage = error.message;
+          this.isSaveLoading = false;
+          return error;
+        }),
+      )
+      .subscribe();
   }
 }

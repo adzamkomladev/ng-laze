@@ -13,7 +13,10 @@
     nzMd="8"
     nzLg="8"
     nzXl="6"
-    nzSrc="https://agentestudio.com/uploads/ckeditor/pictures/1567/content_user-profile-design-14.jpg"
+    [nzSrc]="
+      currentUser?.profileImageUrl ||
+      'https://agentestudio.com/uploads/ckeditor/pictures/1567/content_user-profile-design-14.jpg'
+    "
   ></nz-avatar>
   <div
     class="info-text"
@@ -24,16 +27,12 @@
     nzLg="10"
     nzXl="10"
   >
-    <span nz-typography>Full name</span>
+    <span nz-typography>{{ currentUser?.fullName || 'N/A' }}</span>
     <div>
       <i nz-icon nzType="mail" nzTheme="outline"></i>
-      <span nz-typography>ddd@dd.com</span>
+      <span nz-typography>{{ currentUser?.email || 'N/A' }}</span>
     </div>
-    <p nz-typography>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, recusandae
-      nemo qui doloremque omnis possimus magnam impedit temporibus fugiat! Vitae
-      maxime dicta nobis eius delectus maiores nostrum dolorum quod natus?
-    </p>
+    <p nz-typography>{{ currentUser?.careerDetails || 'N/A' }}</p>
   </div>
 </div>
 <div nz-row>
@@ -41,7 +40,7 @@
     <i nz-icon nzType="phone" nzTheme="outline"></i>
     <div nz-typography>
       <span>Telephone</span><br />
-      <span>0202442452</span>
+      <span>{{ currentUser?.telephone || 'N/A' }}</span>
     </div>
   </div>
   <div class="info-card" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4" nzXl="5">
@@ -55,7 +54,7 @@
     <i nz-icon nzType="safety-certificate" nzTheme="outline"></i>
     <div nz-typography>
       <span>Role</span><br />
-      <span>Student</span>
+      <span>{{ currentUser?.role | titlecase }}</span>
     </div>
   </div>
   <div class="info-card" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4" nzXl="5">
@@ -88,6 +87,7 @@
           nzXl="12"
           [errorMessage]="errorMessage"
           [isSaveLoading]="isSaveLoading"
+          [user]="currentUser"
           (submitForm)="onSubmit($event)"
         ></laze-edit-user-form>
       </div>

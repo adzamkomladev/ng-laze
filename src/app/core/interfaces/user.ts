@@ -4,7 +4,7 @@ export interface User {
   role: Role;
   approved: boolean;
   fullName?: string;
-  dateOfBirth?: string;
+  dateOfBirth?: Date | string;
   careerDetails?: string;
   telephone?: string;
   email?: string;

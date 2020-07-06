@@ -15,6 +15,10 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 
+import { FilestackModule } from '@filestack/angular';
+
+import { CurrentUserResolverService } from '../services/current-user-resolver.service';
+
 import { UserComponent } from './user.component';
 import { EditUserFormComponent } from './components/edit-user-form/edit-user-form.component';
 
@@ -22,7 +26,15 @@ import { EditUserFormComponent } from './components/edit-user-form/edit-user-for
   declarations: [UserComponent, EditUserFormComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: ':id', component: UserComponent }]),
+    RouterModule.forChild([
+      {
+        path: ':id',
+        component: UserComponent,
+        resolve: {
+          currentUser: CurrentUserResolverService,
+        },
+      },
+    ]),
     FormsModule,
     ReactiveFormsModule,
     NzPageHeaderModule,
@@ -36,6 +48,7 @@ import { EditUserFormComponent } from './components/edit-user-form/edit-user-for
     NzUploadModule,
     NzButtonModule,
     NzAlertModule,
+    FilestackModule,
   ],
 })
 export class UserModule {}

@@ -1,27 +1,54 @@
 <form nz-form [formGroup]="form">
   <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="fullname" nz-typography>
+    <nz-form-label [nzSpan]="24" nzFor="full-name" nz-typography>
       <strong>Full name</strong>
     </nz-form-label>
     <nz-form-control
       nzHasFeedback
       nzValidatingTip="Validating..."
-      [nzErrorTip]="fullnameErrorTemplate"
+      [nzErrorTip]="fullNameErrorTemplate"
     >
       <input
-        id="fullname"
+        id="full-name"
         type="text"
         nz-input
         nzSize="large"
-        formControlName="fullname"
-        placeholder="Your fullname"
+        formControlName="fullName"
+        placeholder="Your full name"
       />
-      <ng-template #fullnameErrorTemplate let-control>
+      <ng-template #fullNameErrorTemplate let-control>
         <ng-container *ngIf="control.hasError('required')">
-          Please input your fullname!
+          Please input your full name!
         </ng-container>
         <ng-container *ngIf="control.hasError('maxlength')">
-          Your fullname must be less than 255 characters!
+          Your full name must be less than 255 characters!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="email" nz-typography>
+      <strong>Email address</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="emailErrorTemplate"
+    >
+      <input
+        id="email"
+        type="email"
+        nz-input
+        nzSize="large"
+        formControlName="email"
+        placeholder="Your email address"
+      />
+      <ng-template #emailErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your email address!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Your email address must be less than 255 characters!
         </ng-container>
       </ng-template>
     </nz-form-control>

@@ -48,8 +48,10 @@
         <li nz-submenu nzTitle="Account" nzIcon="safety" nzOpen>
           <ul>
             <li nz-menu-item nzMatchRouter>
-              <i nz-icon nzType="user"></i>
-              <span>Profile</span>
+              <a [routerLink]="['user', (user | async)?.id]">
+                <i nz-icon nzType="user"></i>
+                <span>Profile</span>
+              </a>
             </li>
             <li nz-menu-item (click)="onSignOut()">
               <i nz-icon nzType="logout"></i>

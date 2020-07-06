@@ -8,14 +8,21 @@ import {
   NavigationError,
 } from '@angular/router';
 
+import { Observable } from 'rxjs';
+
+import { AuthService } from '../core/services/auth.service';
+
+import { User } from '../core/interfaces/user';
+
 @Component({
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
   isLoading: boolean;
+  user: Observable<User>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     this.isLoading = false;
 
     this.router.events.subscribe((routerEvent: Event) =>
@@ -23,7 +30,9 @@ export class MainComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = this.authService.authenticatedUser();
+  }
 
   private checkRouterEvent(routerEvent: Event): void {
     if (routerEvent instanceof NavigationStart) {

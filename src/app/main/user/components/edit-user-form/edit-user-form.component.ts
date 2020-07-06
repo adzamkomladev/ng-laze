@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { UploadFile } from 'ng-zorro-antd/upload';
 
+import { User } from 'src/app/core/interfaces/user';
 import { EditUser } from '../../interfaces/edit-user';
 
 @Component({
@@ -10,9 +11,10 @@ import { EditUser } from '../../interfaces/edit-user';
   templateUrl: './edit-user-form.component.html',
   styleUrls: ['./edit-user-form.component.css'],
 })
-export class EditUserFormComponent implements OnInit {
+export class EditUserFormComponent {
   @Input() errorMessage: string;
   @Input() isSaveLoading: string;
+  @Input() user: User;
 
   @Output() submitForm: EventEmitter<EditUser>;
 
@@ -30,23 +32,25 @@ export class EditUserFormComponent implements OnInit {
     this.fileList = [];
 
     this.submitForm = new EventEmitter<EditUser>();
-  }
 
-  ngOnInit(): void {
-    this.initializeForm();
+    this.initializeForm(this.user);
   }
 
   onSubmit(): void {
     this.submitForm.emit({ ...this.form.value, file: this.file } as EditUser);
   }
 
-  private initializeForm(): void {
+  private initializeForm(user: User): void {
     this.form = this.fb.group(
       {
-        fullname: [null, [Validators.required, Validators.maxLength(255)]],
-        telephone: [null, [Validators.required]],
-        careerDetails: [null, [Validators.required]],
-        dateOfBirth: [null, [Validators.required]],
+        fullName: [
+          user?.fullName,
+          [Validators.required, Validators.maxLength(255)],
+        ],
+        telephone: [user?.telephone, [Validators.required]],
+        email: [user?.email, [Validators.required, Validators.maxLength(255)]],
+        careerDetails: [user?.careerDetails, [Validators.required]],
+        dateOfBirth: [user?.dateOfBirth, [Validators.required]],
       },
       { updateOn: 'blur' },
     );
