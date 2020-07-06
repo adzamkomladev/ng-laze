@@ -21,7 +21,12 @@ export class UserComponent implements OnInit {
   isSaveLoading: boolean;
   errorMessage?: string;
   currentUser: User;
-  selectedUser;
+  selectedUser: User;
+
+  get numberOfProjects(): number {
+    const user = this.selectedUser as any;
+    return user?.projectsAssigned?.length + user?.projectsOwned?.length;
+  }
 
   constructor(
     private route: ActivatedRoute,
