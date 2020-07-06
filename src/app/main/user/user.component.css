@@ -41,6 +41,14 @@ nz-page-header {
   color: rgb(138, 136, 136);
 }
 
+.top-details {
+  margin-bottom: 24px;
+}
+
+.bottom-details {
+  margin-top: 48px;
+}
+
 /* media queries */
 
 /* Small devices (landscape phones, 576px and up) */

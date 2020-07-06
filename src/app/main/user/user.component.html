@@ -66,3 +66,31 @@
     </div>
   </div>
 </div>
+<div class="bottom-details">
+  <nz-tabset>
+    <nz-tab [nzTitle]="titleTemplateOne">
+      <ng-template #titleTemplateOne>
+        <i nz-icon nzType="tool"></i> Projects
+      </ng-template>
+      All projects
+    </nz-tab>
+    <nz-tab [nzTitle]="titleTemplateTwo">
+      <ng-template #titleTemplateTwo>
+        <i nz-icon nzType="edit"></i> Edit profile
+      </ng-template>
+      <div nz-row nzType="flex" nzJustify="start">
+        <laze-edit-user-form
+          nz-col
+          nzXs="23"
+          nzSm="23"
+          nzMd="18"
+          nzLg="12"
+          nzXl="12"
+          [errorMessage]="errorMessage"
+          [isSaveLoading]="isSaveLoading"
+          (submitForm)="onSubmit($event)"
+        ></laze-edit-user-form>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</div>

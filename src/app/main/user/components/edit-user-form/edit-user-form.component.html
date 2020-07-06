@@ -1,0 +1,128 @@
+<form nz-form [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="fullname" nz-typography>
+      <strong>Full name</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="fullnameErrorTemplate"
+    >
+      <input
+        id="fullname"
+        type="text"
+        nz-input
+        nzSize="large"
+        formControlName="fullname"
+        placeholder="Your fullname"
+      />
+      <ng-template #fullnameErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your fullname!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Your fullname must be less than 255 characters!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="telephone" nz-typography>
+      <strong>Telephone number</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="telephoneErrorTemplate"
+    >
+      <input
+        id="telephone"
+        type="tel"
+        nz-input
+        nzSize="large"
+        formControlName="telephone"
+        placeholder="Your telephone number"
+      />
+      <ng-template #telephoneErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your telephone number!
+        </ng-container>
+        <ng-container *ngIf="control.hasError('maxlength')">
+          Your telephone number is invalid
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="date-of-birth" nz-typography>
+      <strong>Date of Birth</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="dateOfBirthErrorTemplate"
+    >
+      <nz-date-picker
+        id="date-of-birth"
+        formControlName="dateOfBirth"
+      ></nz-date-picker>
+      <ng-template #dateOfBirthErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your date of birth!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="career-details" nz-typography>
+      <strong>Career Details</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="careerDetailsErrorTemplate"
+    >
+      <textarea
+        id="career-details"
+        nz-input
+        rows="4"
+        formControlName="careerDetails"
+        placeholder="Your career details"
+      ></textarea>
+
+      <ng-template #careerDetailsErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input your career details!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
+      <strong>Profile image</strong>
+    </nz-form-label>
+    <nz-form-control>
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+        <button nz-button><i nz-icon nzType="upload"></i>Select image</button>
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-alert
+    *ngIf="errorMessage"
+    nzType="error"
+    nzCloseable
+    nzMessage="Profile update error"
+    [nzDescription]="errorMessage"
+  ></nz-alert>
+  <button
+    class="submit-button"
+    nz-button
+    [disabled]="form.invalid"
+    [nzLoading]="isSaveLoading"
+    nz-typography
+    nzType="primary"
+    (click)="onSubmit()"
+  >
+    <strong>Update profile</strong>
+  </button>
+</form>
