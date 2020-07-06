@@ -48,7 +48,7 @@
         <li nz-submenu nzTitle="Account" nzIcon="safety" nzOpen>
           <ul>
             <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="['user', (user | async)?.id]">
+              <a [routerLink]="['user', (user | async)?.id || 1]">
                 <i nz-icon nzType="user"></i>
                 <span>Profile</span>
               </a>
