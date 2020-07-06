@@ -1,4 +1,11 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { UploadFile } from 'ng-zorro-antd/upload';
@@ -11,7 +18,7 @@ import { EditUser } from '../../interfaces/edit-user';
   templateUrl: './edit-user-form.component.html',
   styleUrls: ['./edit-user-form.component.css'],
 })
-export class EditUserFormComponent {
+export class EditUserFormComponent implements OnChanges {
   @Input() errorMessage: string;
   @Input() isSaveLoading: string;
   @Input() user: User;
@@ -34,6 +41,12 @@ export class EditUserFormComponent {
     this.submitForm = new EventEmitter<EditUser>();
 
     this.initializeForm(this.user);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const user = changes?.user.currentValue;
+
+    this.initializeForm(user);
   }
 
   onSubmit(): void {
