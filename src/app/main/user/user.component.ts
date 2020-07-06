@@ -38,8 +38,6 @@ export class UserComponent implements OnInit {
     this.errorMessage = null;
     this.isSaveLoading = true;
 
-    console.log({ formData });
-
     const updateData: Partial<User> = {
       ...formData,
       id: this.currentUser.id,

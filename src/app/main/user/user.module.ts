@@ -21,9 +21,10 @@ import { CurrentUserResolverService } from '../services/current-user-resolver.se
 
 import { UserComponent } from './user.component';
 import { EditUserFormComponent } from './components/edit-user-form/edit-user-form.component';
+import { AgePipe } from './pipes/age.pipe';
 
 @NgModule({
-  declarations: [UserComponent, EditUserFormComponent],
+  declarations: [UserComponent, EditUserFormComponent, AgePipe],
   imports: [
     CommonModule,
     RouterModule.forChild([
