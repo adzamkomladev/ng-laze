@@ -13,6 +13,7 @@
 <div nz-row class="project-cards">
   <laze-project-card
     *ngFor="let project of projectsToDisplay"
+    [project]="project"
     nz-col
     nzXs="24"
     nzSm="24"
@@ -21,6 +22,11 @@
     nzXl="11"
   ></laze-project-card>
 </div>
+<nz-pagination
+  [nzPageIndex]="1"
+  [nzTotal]="projects.length"
+  (nzPageIndexChange)="onPageIndexChange($event)"
+></nz-pagination>
 
 <nz-modal
   [(nzVisible)]="isModalVisible"

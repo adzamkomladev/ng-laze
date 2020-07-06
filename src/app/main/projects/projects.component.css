@@ -4,8 +4,8 @@ nz-page-header {
 
 .new-button-wrapper {
   display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
+  justify-content: start;
+  margin-bottom: 42px;
 }
 
 .project-cards {
@@ -15,6 +15,10 @@ nz-page-header {
 
 .project-cards > * {
   margin-bottom: 24px;
+}
+
+nz-pagination {
+  text-align: center;
 }
 
 /* media queries */

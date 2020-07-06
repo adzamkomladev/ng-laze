@@ -1,34 +1,40 @@
 <nz-card>
   <div nz-row nzJustify="space-between">
     <div nz-col>
-      <h3>Title</h3>
+      <h3>{{ project.title }}</h3>
       <p
         nzTooltipTitle="Project deadline"
         nzTooltipPlacement="bottom"
         nz-tooltip
       >
-        <i nz-icon nzType="calendar"></i> 28 May 2020
+        <i nz-icon nzType="hourglass" nzTheme="outline"></i>
+        {{ project.deadline | date }}
       </p>
       <p
         nzTooltipTitle="Project creation"
         nzTooltipPlacement="bottom"
         nz-tooltip
       >
-        <i nz-icon nzType="calendar"></i> 12 May 2020
+        <i nz-icon nzType="calendar"></i> {{ project?.createdAt | date }}
       </p>
     </div>
     <div nz-col>
-      <p typography class="price"><strong>$20.00</strong></p>
+      <p typography class="price">
+        <strong>{{ project?.price || 'N/A' }}</strong>
+      </p>
       <div class="owner-info">
-        <nz-avatar nzText="U"></nz-avatar>
-        <p>kofi</p>
+        <nz-avatar
+          [nzSrc]="project.owner?.profileImageUrl"
+          nzText="U"
+        ></nz-avatar>
+        <p>{{ project.owner.username }}</p>
       </div>
     </div>
   </div>
   <hr />
   <div nz-row nzJustify="space-between">
     <div nz-col>
-      <nz-tag nzColor="#337357">Status</nz-tag>
+      <nz-tag nzColor="#337357">{{ project.status | titlecase }}</nz-tag>
     </div>
     <div nz-col>
       <button nz-button nzType="primary">
