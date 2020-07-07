@@ -3,9 +3,12 @@
 }
 
 nz-header {
+  position: fixed;
+  width: 100%;
   z-index: 10;
   box-shadow: 0 2px 8px #f0f1f2;
   text-align: center;
+  margin-bottom: 18px;
 }
 
 nz-header > .logo > img {
@@ -27,13 +30,22 @@ nz-footer {
   text-align: center;
 }
 
+.main-sider {
+  overflow: auto;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 100%;
+}
+
 nz-sider {
   background: #ffffff;
+  margin-top: 18px;
 }
 
 nz-sider ul.menu-list,
 .inner-content {
-  padding-top: 24px;
+  padding-top: 72px;
 }
 
 /* .main-sider {
@@ -42,6 +54,8 @@ nz-sider ul.menu-list,
 
 nz-content {
   background: #ffffff;
+  padding-top: 42px;
+  width: 100%;
 }
 
 nz-content.loading {

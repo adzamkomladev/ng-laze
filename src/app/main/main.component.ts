@@ -21,9 +21,11 @@ import { User } from '../core/interfaces/user';
 export class MainComponent implements OnInit {
   isLoading: boolean;
   user: Observable<User>;
+  isCollapsed: boolean;
 
   constructor(private router: Router, private authService: AuthService) {
     this.isLoading = false;
+    this.isCollapsed = true;
 
     this.router.events.subscribe((routerEvent: Event) =>
       this.checkRouterEvent(routerEvent),
@@ -36,7 +38,7 @@ export class MainComponent implements OnInit {
 
   private checkRouterEvent(routerEvent: Event): void {
     if (routerEvent instanceof NavigationStart) {
-      this.isLoading = true;
+      this.isLoading = this.isCollapsed = true;
     }
 
     if (

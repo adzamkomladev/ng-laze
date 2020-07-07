@@ -9,12 +9,13 @@
     <nz-sider
       nzWidth="280px"
       nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
       nzBreakpoint="lg"
       [nzZeroTrigger]="triggerTemplate"
       [nzCollapsedWidth]="0"
     >
       <ng-template #triggerTemplate>
-        <div [style.background-color]="'#337357'">
+        <div [ngStyle]="{ backgroundColor: '#337357' }">
           <i nz-icon nzType="menu"></i>
         </div>
       </ng-template>
