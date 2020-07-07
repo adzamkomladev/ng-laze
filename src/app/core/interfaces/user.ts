@@ -1,3 +1,5 @@
+import { Project } from 'src/app/main/interfaces/project';
+
 export interface User {
   id?: number;
   username: string;
@@ -8,6 +10,8 @@ export interface User {
   careerDetails?: string;
   telephone?: string;
   email?: string;
+  projectsOwned: Project[];
+  projectsAssigned: Project[];
   profileImageUrl?: string;
   createdAt: Date | string;
   updatedAt: Date | string;

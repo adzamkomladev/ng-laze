@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 
 import { User } from 'src/app/core/interfaces/user';
 import { EditUser } from './interfaces/edit-user';
+import { Project } from '../interfaces/project';
 
 @Component({
   templateUrl: './user.component.html',
@@ -26,6 +27,17 @@ export class UserComponent implements OnInit {
   get numberOfProjects(): number {
     const user = this.selectedUser as any;
     return user?.projectsAssigned?.length + user?.projectsOwned?.length;
+  }
+
+  get allProjects(): Project[] {
+    return [
+      ...this.selectedUser.projectsOwned,
+      ...this.selectedUser.projectsAssigned,
+    ];
+  }
+
+  get isCurrentUser(): boolean {
+    return this.currentUser.id === this.selectedUser.id;
   }
 
   constructor(

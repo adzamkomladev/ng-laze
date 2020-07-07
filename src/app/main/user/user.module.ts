@@ -14,6 +14,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { FilestackModule } from '@filestack/angular';
 
@@ -24,9 +25,15 @@ import { AgePipe } from './pipes/age.pipe';
 
 import { UserComponent } from './user.component';
 import { EditUserFormComponent } from './components/edit-user-form/edit-user-form.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
-  declarations: [UserComponent, EditUserFormComponent, AgePipe],
+  declarations: [
+    UserComponent,
+    EditUserFormComponent,
+    AgePipe,
+    ProjectCardComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -52,6 +59,7 @@ import { EditUserFormComponent } from './components/edit-user-form/edit-user-for
     NzUploadModule,
     NzButtonModule,
     NzAlertModule,
+    NzDividerModule,
     FilestackModule,
   ],
 })

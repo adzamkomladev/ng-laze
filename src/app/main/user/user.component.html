@@ -71,12 +71,25 @@
       <ng-template #titleTemplateOne>
         <i nz-icon nzType="tool"></i> Projects
       </ng-template>
-      All projects
+      <ng-container
+        nz-row
+        nzType="flex"
+        nzJustify="start"
+        *ngIf="allProjects; else noProjectsTemplate"
+      >
+        <div nz-col nzXs="24" nzSm="24" nzMd="18" nzLg="14" nzXl="14">
+          <laze-project-card
+            *ngFor="let project of allProjects | slice: 0:2"
+            [project]="project"
+          ></laze-project-card>
+        </div>
+        <p *ngIf="isCurrentUser">See all</p>
+      </ng-container>
+      <ng-template #noProjectsTemplate>
+        No projects
+      </ng-template>
     </nz-tab>
-    <nz-tab
-      *ngIf="currentUser.id === selectedUser.id"
-      [nzTitle]="titleTemplateTwo"
-    >
+    <nz-tab *ngIf="isCurrentUser" [nzTitle]="titleTemplateTwo">
       <ng-template #titleTemplateTwo>
         <i nz-icon nzType="edit"></i> Edit profile
       </ng-template>

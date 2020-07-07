@@ -1,0 +1,24 @@
+<div>
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <div nz-col nz-row nzType="flex" nzAlign="middle">
+      <p class="title" nz-col nz-typography>{{ project.title }}</p>
+      <p nz-col nz-typography>
+        <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+        {{ project.deadline | date }}
+      </p>
+    </div>
+    <button nz-col nz-button nzSize="large" nzType="default">
+      <i nz-icon nzType="eye" nzTheme="outline"></i> View project
+    </button>
+  </div>
+
+  <p nz-typography>{{ project.details }}</p>
+  <div>
+    <p>Files({{ numberOfFiles }})</p>
+    <a *ngIf="project?.fileUrl" [href]="project?.fileUrl">Project file</a>
+    <a *ngIf="project?.submittedFileUrl" [href]="project?.submittedFileUrl">
+      Submitted file
+    </a>
+  </div>
+</div>
+<nz-divider></nz-divider>
