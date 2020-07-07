@@ -4,7 +4,7 @@ nz-page-header {
 
 .new-button-wrapper {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 42px;
 }
 

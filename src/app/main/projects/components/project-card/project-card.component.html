@@ -37,10 +37,15 @@
       <nz-tag nzColor="#337357">{{ project.status | titlecase }}</nz-tag>
     </div>
     <div nz-col>
-      <button nz-button nzType="primary">
+      <button (click)="onProjectAction('VIEW')" nz-button nzType="primary">
         <i nz-icon nzType="eye"></i>View
       </button>
-      <button nz-button nzType="default">
+      <button
+        (click)="onProjectAction('EDIT')"
+        nz-button
+        nzType="default"
+        *ngIf="canEdit"
+      >
         <i nz-icon nzType="edit"></i>Edit
       </button>
     </div>

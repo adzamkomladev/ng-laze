@@ -14,12 +14,14 @@
   <laze-project-card
     *ngFor="let project of projectsToDisplay"
     [project]="project"
+    [currentUser]="currentUser"
     nz-col
     nzXs="24"
     nzSm="24"
     nzMd="11"
     nzLg="11"
     nzXl="11"
+    (projectAction)="onProjectAction($event, project)"
   ></laze-project-card>
 </div>
 <nz-pagination

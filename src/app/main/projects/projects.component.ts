@@ -14,6 +14,8 @@ import { environment } from '../../../environments/environment';
 import { Project } from '../interfaces/project';
 import { User } from '../../core/interfaces/user';
 
+import { ProjectAction } from './types/project-action.type';
+
 @Component({
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
@@ -104,5 +106,9 @@ export class ProjectsComponent implements OnInit {
 
   onCancel(): void {
     this.isModalVisible = false;
+  }
+
+  onProjectAction(projectAction: ProjectAction, project: Project): void {
+    console.log({ projectAction, project });
   }
 }
