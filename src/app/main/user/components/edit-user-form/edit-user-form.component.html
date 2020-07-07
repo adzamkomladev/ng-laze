@@ -53,53 +53,55 @@
       </ng-template>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="telephone" nz-typography>
-      <strong>Telephone number</strong>
-    </nz-form-label>
-    <nz-form-control
-      nzHasFeedback
-      nzValidatingTip="Validating..."
-      [nzErrorTip]="telephoneErrorTemplate"
-    >
-      <input
-        id="telephone"
-        type="tel"
-        nz-input
-        nzSize="large"
-        formControlName="telephone"
-        placeholder="Your telephone number"
-      />
-      <ng-template #telephoneErrorTemplate let-control>
-        <ng-container *ngIf="control.hasError('required')">
-          Please input your telephone number!
-        </ng-container>
-        <ng-container *ngIf="control.hasError('maxlength')">
-          Your telephone number is invalid
-        </ng-container>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="date-of-birth" nz-typography>
-      <strong>Date of Birth</strong>
-    </nz-form-label>
-    <nz-form-control
-      nzHasFeedback
-      nzValidatingTip="Validating..."
-      [nzErrorTip]="dateOfBirthErrorTemplate"
-    >
-      <nz-date-picker
-        id="date-of-birth"
-        formControlName="dateOfBirth"
-      ></nz-date-picker>
-      <ng-template #dateOfBirthErrorTemplate let-control>
-        <ng-container *ngIf="control.hasError('required')">
-          Please input your date of birth!
-        </ng-container>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="14" nzLg="14" nzXl="14">
+      <nz-form-label [nzSpan]="24" nzFor="telephone" nz-typography>
+        <strong>Telephone number</strong>
+      </nz-form-label>
+      <nz-form-control
+        nzHasFeedback
+        nzValidatingTip="Validating..."
+        [nzErrorTip]="telephoneErrorTemplate"
+      >
+        <input
+          id="telephone"
+          type="tel"
+          nz-input
+          nzSize="large"
+          formControlName="telephone"
+          placeholder="Your telephone number"
+        />
+        <ng-template #telephoneErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input your telephone number!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')">
+            Your telephone number is invalid
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" nzXl="8">
+      <nz-form-label [nzSpan]="24" nzFor="date-of-birth" nz-typography>
+        <strong>Date of Birth</strong>
+      </nz-form-label>
+      <nz-form-control
+        nzHasFeedback
+        nzValidatingTip="Validating..."
+        [nzErrorTip]="dateOfBirthErrorTemplate"
+      >
+        <nz-date-picker
+          id="date-of-birth"
+          formControlName="dateOfBirth"
+        ></nz-date-picker>
+        <ng-template #dateOfBirthErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input your date of birth!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
   <nz-form-item>
     <nz-form-label [nzSpan]="24" nzFor="career-details" nz-typography>
       <strong>Career Details</strong>

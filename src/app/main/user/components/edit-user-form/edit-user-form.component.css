@@ -2,3 +2,7 @@ nz-alert,
 button.submit-button {
   margin-top: 18px;
 }
+
+#date-of-birth {
+  width: 100%;
+}
