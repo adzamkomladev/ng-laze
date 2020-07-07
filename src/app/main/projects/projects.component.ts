@@ -28,6 +28,10 @@ export class ProjectsComponent implements OnInit {
   projects: Project[];
   projectsToDisplay: Project[];
 
+  get isCurrentUserAdmin(): boolean {
+    return this.currentUser?.role === 'ADMIN';
+  }
+
   constructor(
     private route: ActivatedRoute,
     private filestackService: FilestackService,

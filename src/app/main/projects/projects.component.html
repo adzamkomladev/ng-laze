@@ -5,7 +5,7 @@
   nzSubtitle="All available projects"
 >
 </nz-page-header>
-<div class="new-button-wrapper">
+<div *ngIf="!isCurrentUserAdmin" class="new-button-wrapper">
   <button nz-button nzType="primary" (click)="onOpenModal()">
     <i nz-icon nzType="plus"></i> New project
   </button>

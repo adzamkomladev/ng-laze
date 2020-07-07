@@ -50,31 +50,36 @@
       </ng-template>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="deadline" nz-typography>
-      <strong>Deadline</strong>
-    </nz-form-label>
-    <nz-form-control
-      nzHasFeedback
-      nzValidatingTip="Validating..."
-      [nzErrorTip]="deadlineErrorTemplate"
-    >
-      <nz-date-picker id="deadline" formControlName="deadline"></nz-date-picker>
-      <ng-template #deadlineErrorTemplate let-control>
-        <ng-container *ngIf="control.hasError('required')">
-          Please input your deadline!
-        </ng-container>
-      </ng-template>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
-      <strong>File</strong>
-    </nz-form-label>
-    <nz-form-control>
-      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
-        <button nz-button><i nz-icon nzType="upload"></i>Select File</button>
-      </nz-upload>
-    </nz-form-control>
-  </nz-form-item>
+  <div nz-row nzType="details" nzJustify="space-between">
+    <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+      <nz-form-label [nzSpan]="24" nzFor="deadline" nz-typography>
+        <strong>Deadline</strong>
+      </nz-form-label>
+      <nz-form-control
+        nzHasFeedback
+        nzValidatingTip="Validating..."
+        [nzErrorTip]="deadlineErrorTemplate"
+      >
+        <nz-date-picker
+          id="deadline"
+          formControlName="deadline"
+        ></nz-date-picker>
+        <ng-template #deadlineErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input your deadline!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+      <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
+        <strong>File</strong>
+      </nz-form-label>
+      <nz-form-control>
+        <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+          <button nz-button><i nz-icon nzType="upload"></i>Select File</button>
+        </nz-upload>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
 </form>
