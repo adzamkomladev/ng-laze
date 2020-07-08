@@ -15,6 +15,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { FilestackModule } from '@filestack/angular';
 
@@ -60,6 +61,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     NzButtonModule,
     NzAlertModule,
     NzDividerModule,
+    NzMessageModule,
     FilestackModule,
   ],
 })

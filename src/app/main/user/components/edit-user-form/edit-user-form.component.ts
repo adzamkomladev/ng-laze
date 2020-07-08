@@ -44,7 +44,7 @@ export class EditUserFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const user = changes?.user.currentValue;
+    const user = changes?.user?.currentValue;
 
     this.initializeForm(user);
   }

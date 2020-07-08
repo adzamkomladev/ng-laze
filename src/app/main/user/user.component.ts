@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { concatMap, tap, catchError } from 'rxjs/operators';
 
+import { NzMessageService } from 'ng-zorro-antd/message';
+
 import { FilestackService } from '@filestack/angular';
 import { InputFile } from 'filestack-js';
 
@@ -42,6 +44,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private message: NzMessageService,
     private filestackService: FilestackService,
     private userService: UserService,
   ) {}
@@ -79,12 +82,25 @@ export class UserComponent implements OnInit {
     submitStream
       .pipe(
         tap((_) => {
-          this.currentUser = { ...this.currentUser, ...updateData };
+          this.selectedUser = {
+            ...this.selectedUser,
+            fullName: updateData.fullName ?? this.selectedUser.fullName,
+            telephone: updateData.telephone ?? this.selectedUser.telephone,
+            email: updateData.email ?? this.selectedUser.email,
+            careerDetails:
+              updateData.careerDetails ?? this.selectedUser.careerDetails,
+            dateOfBirth:
+              updateData.dateOfBirth ?? this.selectedUser.dateOfBirth,
+            profileImageUrl:
+              updateData.profileImageUrl ?? this.selectedUser.profileImageUrl,
+          };
           this.isSaveLoading = false;
+          this.message.success('Your profile has been updated!');
         }),
         catchError((error) => {
           this.errorMessage = error.message;
           this.isSaveLoading = false;
+          this.message.error(this.errorMessage);
           return error;
         }),
       )
