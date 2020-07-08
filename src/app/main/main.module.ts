@@ -14,6 +14,7 @@ import { UsersResolverService } from './services/users-resolver.service';
 import { CurrentUserResolverService } from './services/current-user-resolver.service';
 import { ProjectsResolverService } from './services/projects-resolver.service';
 import { UserResolverService } from './services/user-resolver.service';
+import { ProjectResolverService } from './services/project-resolver.service';
 
 import { MainComponent } from './main.component';
 
@@ -34,6 +35,7 @@ import { MainComponent } from './main.component';
     ProjectsResolverService,
     CurrentUserResolverService,
     UserResolverService,
+    ProjectResolverService,
   ],
 })
 export class MainModule {}

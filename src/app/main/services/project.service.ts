@@ -22,6 +22,12 @@ export class ProjectService {
       .pipe(tap((p) => console.log({ p })));
   }
 
+  findOneById(id: number): Observable<Project> {
+    return this.http
+      .get<Project>(`${this.projectsBaseUrl}/${id}`)
+      .pipe(tap((pp) => console.log({ pp })));
+  }
+
   create(createData: Partial<Project>): Observable<Project> {
     return this.http.post<Project>(this.projectsBaseUrl, { ...createData });
   }

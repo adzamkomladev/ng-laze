@@ -7,7 +7,13 @@
         {{ project.deadline | date }}
       </p>
     </div>
-    <button nz-col nz-button nzSize="large" nzType="default">
+    <button
+      [routerLink]="['/main', 'project', project.id]"
+      nz-col
+      nz-button
+      nzSize="large"
+      nzType="default"
+    >
       <i nz-icon nzType="eye" nzTheme="outline"></i> View project
     </button>
   </div>

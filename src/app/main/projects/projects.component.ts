@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { catchError, concatMap, delay, tap } from 'rxjs/operators';
 
@@ -33,6 +33,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private filestackService: FilestackService,
     private projectsService: ProjectService,
@@ -113,6 +114,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   onProjectAction(projectAction: ProjectAction, project: Project): void {
-    console.log({ projectAction, project });
+    this.router.navigate(['/main', 'project', project.id]);
   }
 }
