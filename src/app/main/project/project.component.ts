@@ -11,11 +11,13 @@ import { Project } from '../interfaces/project';
 export class ProjectComponent implements OnInit {
   currentUser: User;
   selectedProject: Project;
+  allUsers: User[];
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.currentUser = this.route.snapshot.data['currentUser'];
     this.selectedProject = this.route.snapshot.data['selectedProject'];
+    this.allUsers = this.route.snapshot.data['allUsers'];
   }
 }

@@ -4,16 +4,10 @@
   nzSubtitle="Details of project"
 ></nz-page-header>
 
-<div class="main-container">
-  <div class="top">p</div>
-  <div class="bottom" nz-row>
-    <div nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11" class="left">
-      u
-    </div>
-    <div nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11" class="right">
-      p
-    </div>
-  </div>
-</div>
+<laze-details-card
+  [currentUser]="currentUser"
+  [selectedProject]="selectedProject"
+  [allUsers]="allUsers"
+></laze-details-card>
 <pre>{{ currentUser | json }}</pre>
 <pre>{{ selectedProject | json }}</pre>

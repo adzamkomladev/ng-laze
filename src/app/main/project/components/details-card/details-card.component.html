@@ -1,0 +1,160 @@
+<div class="top">p</div>
+<form
+  [formGroup]="form"
+  class="bottom"
+  nz-row
+  nzType="flex"
+  nzJustify="space-between"
+>
+  <div nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11" class="left">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24" nzFor="title" nz-typography>
+        <strong>Title</strong>
+      </nz-form-label>
+      <nz-form-control
+        nzHasFeedback
+        nzValidatingTip="Validating..."
+        [nzErrorTip]="titleErrorTemplate"
+      >
+        <input
+          id="title"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="title"
+          placeholder="Project title"
+        />
+        <ng-template #titleErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input project title!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')">
+            Project title must be less than 255 characters!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24" nzFor="details" nz-typography>
+        <strong>Details</strong>
+      </nz-form-label>
+      <nz-form-control
+        nzHasFeedback
+        nzValidatingTip="Validating..."
+        [nzErrorTip]="detailsErrorTemplate"
+      >
+        <textarea
+          id="details"
+          nz-input
+          rows="4"
+          formControlName="details"
+          placeholder="Project details"
+        ></textarea>
+
+        <ng-template #detailsErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Please input project details!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row nzType="flex" nzJustify="space-between">
+      <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+        <nz-form-label [nzSpan]="24" nzFor="deadline" nz-typography>
+          <strong>Deadline</strong>
+        </nz-form-label>
+        <nz-form-control
+          nzHasFeedback
+          nzValidatingTip="Validating..."
+          [nzErrorTip]="deadlineErrorTemplate"
+        >
+          <nz-date-picker
+            id="deadline"
+            formControlName="deadline"
+          ></nz-date-picker>
+          <ng-template #deadlineErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              Please input your deadline!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+        <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
+          <strong>File</strong>
+        </nz-form-label>
+        <nz-form-control>
+          <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+            <button nz-button>
+              <i nz-icon nzType="upload"></i>Select File
+            </button>
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11" class="right">
+    <div nz-row nzType="flex" nzJustify="space-between">
+      <nz-form-item nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+        <nz-form-label [nzSpan]="24" nzFor="status" nz-typography>
+          <strong>Status</strong>
+        </nz-form-label>
+        <nz-form-control>
+          <nz-select id="status" formControlName="status">
+            <nz-option
+              *ngFor="let status of statuses"
+              [nzValue]="status"
+              nzLabel="{{ status | titlecase }}"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-input-group nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="11" nzXl="11">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="price" nz-typography>
+            <strong>Price</strong>
+          </nz-form-label>
+          <nz-form-control
+            nzValidatingTip="Validating..."
+            [nzErrorTip]="priceErrorTemplate"
+          >
+            <nz-input-number
+              formControlName="price"
+              nzInputModel="decimal"
+              [nzStep]="0.1"
+              nzId="price"
+              [nzFormatter]="formatterCedi"
+              [nzParser]="parserCedi"
+            ></nz-input-number>
+            <ng-template #priceErrorTemplate let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please input your price!
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-input-group>
+    </div>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24" nzFor="assignee-id" nz-typography>
+        <strong>Assignee</strong>
+      </nz-form-label>
+      <nz-form-control>
+        <nz-select id="assignee-id" formControlName="assigneeId">
+          <nz-option
+            *ngFor="let assignee of allUsers"
+            [nzValue]="assignee.id"
+            nzLabel="{{ assignee.username }}"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+
+<div class="button-container">
+  <button nz-button nzType="primary" nzSize="large" (click)="onSubmit()">
+    Update project
+  </button>
+</div>
