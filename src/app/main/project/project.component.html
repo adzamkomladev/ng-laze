@@ -8,6 +8,8 @@
   [currentUser]="currentUser"
   [selectedProject]="selectedProject"
   [allUsers]="allUsers"
+  (submitForm)="onSubmit($event)"
+  [isSaveLoading]="isSaveLoading"
 ></laze-details-card>
 <pre>{{ currentUser | json }}</pre>
 <pre>{{ selectedProject | json }}</pre>

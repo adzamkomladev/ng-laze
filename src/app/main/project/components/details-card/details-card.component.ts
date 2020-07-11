@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UploadFile } from 'ng-zorro-antd/upload';
@@ -16,6 +16,9 @@ export class DetailsCardComponent implements OnInit {
   @Input() currentUser: User;
   @Input() selectedProject: Project;
   @Input() allUsers: User[];
+  @Input() isSaveLoading: boolean;
+
+  @Output() submitForm: EventEmitter<ProjectData>;
 
   form: FormGroup;
   file: UploadFile;
@@ -26,6 +29,7 @@ export class DetailsCardComponent implements OnInit {
   parserCedi: (value: string) => number;
 
   constructor(private fb: FormBuilder) {
+    this.submitForm = new EventEmitter<ProjectData>();
     this.initializeVariables();
     this.initializeForm();
   }
@@ -40,7 +44,7 @@ export class DetailsCardComponent implements OnInit {
       file: this.file,
     };
 
-    console.log(projectData);
+    this.submitForm.emit(projectData);
   }
 
   private initializeForm(): void {

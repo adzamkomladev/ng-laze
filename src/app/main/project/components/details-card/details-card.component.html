@@ -154,7 +154,13 @@
 </form>
 
 <div class="button-container">
-  <button nz-button nzType="primary" nzSize="large" (click)="onSubmit()">
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    [nzLoading]="isSaveLoading"
+    (click)="onSubmit()"
+  >
     Update project
   </button>
 </div>

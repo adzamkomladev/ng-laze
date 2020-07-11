@@ -31,4 +31,9 @@ export class ProjectService {
   create(createData: Partial<Project>): Observable<Project> {
     return this.http.post<Project>(this.projectsBaseUrl, { ...createData });
   }
+
+  update(updateData: Partial<Project>): Observable<void> {
+    const updateProjectUrl = `${this.projectsBaseUrl}/${updateData.id}`;
+    return this.http.patch<void>(updateProjectUrl, { ...updateData });
+  }
 }

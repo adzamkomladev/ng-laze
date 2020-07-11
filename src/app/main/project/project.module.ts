@@ -18,6 +18,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
+import { FilestackModule } from '@filestack/angular';
+
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 import { ProjectResolverService } from '../services/project-resolver.service';
 import { UsersResolverService } from '../services/users-resolver.service';
@@ -56,6 +58,7 @@ import { DetailsCardComponent } from './components/details-card/details-card.com
     NzSelectModule,
     NzDropDownModule,
     NzInputNumberModule,
+    FilestackModule,
   ],
 })
 export class ProjectModule {}

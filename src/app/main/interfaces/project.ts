@@ -1,3 +1,5 @@
+import { UploadFile } from 'ng-zorro-antd/upload';
+
 import { User } from '../../core/interfaces/user';
 
 export interface Project {
@@ -8,19 +10,20 @@ export interface Project {
   assignee?: User;
   title: string;
   details: string;
-  deadline: Date;
+  deadline: Date | string;
   fileUrl?: string;
+  file?: File | UploadFile;
   status: Status;
   price?: number;
   submitText?: string;
   submittedFileUrl?: string;
-  dateSubmitted?: Date;
-  dateAssigned?: Date;
-  createdAt?: Date;
-  updatedAt?: Date;
+  dateSubmitted?: Date | string;
+  dateAssigned?: Date | string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 }
 
-type Status =
+export type Status =
   | 'INITIATED'
   | 'PRICED'
   | 'ASSIGNED'
