@@ -8,8 +8,9 @@
   [currentUser]="currentUser"
   [selectedProject]="selectedProject"
   [allUsers]="allUsers"
-  (submitForm)="onSubmit($event)"
   [isSaveLoading]="isSaveLoading"
+  (submitForm)="onSubmit($event)"
+  (openSubmitModal)="onOpenModal()"
 ></laze-details-card>
 
 <nz-modal

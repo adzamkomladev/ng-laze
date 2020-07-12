@@ -19,6 +19,7 @@ export class DetailsCardComponent implements OnInit {
   @Input() isSaveLoading: boolean;
 
   @Output() submitForm: EventEmitter<ProjectData>;
+  @Output() openSubmitModal: EventEmitter<null>;
 
   form: FormGroup;
   file: UploadFile;
@@ -30,12 +31,17 @@ export class DetailsCardComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.submitForm = new EventEmitter<ProjectData>();
+    this.openSubmitModal = new EventEmitter<null>();
     this.initializeVariables();
     this.initializeForm();
   }
 
   ngOnInit(): void {
     this.reInitializeForm();
+  }
+
+  onOpenSubmit(): void {
+    this.openSubmitModal.emit();
   }
 
   onSubmit(): void {

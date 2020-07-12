@@ -107,9 +107,8 @@ export class ProjectComponent implements OnInit {
     if (!this.submitProjectFormService.getFormValidity()) {
       return;
     }
-    console.log(this.submitProjectFormService.getFormValue());
-    return;
-    this.isSaveLoading = true;
+
+    this.isModalSaveLoading = true;
 
     const submitData: Partial<Project> = {
       ...this.submitProjectFormService.getFormValue(),
@@ -137,13 +136,13 @@ export class ProjectComponent implements OnInit {
       .pipe(
         tap((project) => {
           console.log({ project });
-          this.isSaveLoading = false;
+          this.isModalSaveLoading = false;
         }),
         delay(500),
         tap((_) => this.onCancel()),
         catchError((error) => {
           this.errorMessage = error.message;
-          this.isSaveLoading = false;
+          this.isModalSaveLoading = false;
           return error;
         }),
       )

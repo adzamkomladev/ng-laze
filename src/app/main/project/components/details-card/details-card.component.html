@@ -1,4 +1,49 @@
-<div class="top">p</div>
+<div nz-row nzType="flex" nzJustify="space-around" class="top">
+  <div
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="11"
+    nzLg="11"
+    nzXl="11"
+    class="top-left"
+  >
+    <span>
+      <nz-avatar
+        [nzSrc]="
+          selectedProject.owner?.profileImageUrl ||
+          'https://agentestudio.com/uploads/ckeditor/pictures/1567/content_user-profile-design-14.jpg'
+        "
+      ></nz-avatar>
+    </span>
+    <span [style.font-size]="'18px'" nz-typography>
+      <strong>{{ selectedProject.owner.username }}</strong>
+    </span>
+    <span>
+      <a
+        *ngIf="selectedProject.assigneeId === currentUser.id"
+        (click)="onOpenSubmit()"
+        >Submit</a
+      >
+    </span>
+  </div>
+  <div
+    nzType="flex"
+    nzJustify="space-between"
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="11"
+    nzLg="11"
+    nzXl="11"
+    class="top-right"
+  >
+    <span> <i nz-icon nzType="rise" nzTheme="outline"></i> Intermediate </span>
+    <span>
+      <i nz-icon nzType="calendar" nzTheme="outline"></i> 5 days more
+    </span>
+  </div>
+</div>
 <form
   [formGroup]="form"
   class="bottom"
