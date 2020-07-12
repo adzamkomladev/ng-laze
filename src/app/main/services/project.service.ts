@@ -36,4 +36,9 @@ export class ProjectService {
     const updateProjectUrl = `${this.projectsBaseUrl}/${updateData.id}`;
     return this.http.patch<void>(updateProjectUrl, { ...updateData });
   }
+
+  submit(submitData: Partial<Project>): Observable<void> {
+    const submitProjectUrl = `${this.projectsBaseUrl}/${submitData.id}/submit`;
+    return this.http.patch<void>(submitProjectUrl, { ...submitData });
+  }
 }

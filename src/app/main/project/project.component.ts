@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { concatMap, tap, catchError } from 'rxjs/operators';
+import { concatMap, tap, catchError, delay } from 'rxjs/operators';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -15,6 +15,7 @@ import { ProjectService } from '../services/project.service';
 import { User } from 'src/app/core/interfaces/user';
 import { Project } from '../interfaces/project';
 import { ProjectData } from './interfaces/project-data';
+import { SubmitProjectFormService } from './services/submit-project-form.service';
 
 @Component({
   templateUrl: './project.component.html',
@@ -25,12 +26,16 @@ export class ProjectComponent implements OnInit {
   selectedProject: Project;
   allUsers: User[];
   isSaveLoading: boolean;
+  isModalVisible: boolean;
+  isModalSaveLoading: boolean;
+  errorMessage?: string;
 
   constructor(
     private route: ActivatedRoute,
     private message: NzMessageService,
     private filestackService: FilestackService,
     private projectService: ProjectService,
+    private submitProjectFormService: SubmitProjectFormService,
   ) {}
 
   ngOnInit(): void {
@@ -90,5 +95,62 @@ export class ProjectComponent implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  onOpenModal(): void {
+    this.isModalVisible = true;
+  }
+
+  onSubmitProject() {
+    this.errorMessage = null;
+
+    if (!this.submitProjectFormService.getFormValidity()) {
+      return;
+    }
+    console.log(this.submitProjectFormService.getFormValue());
+    return;
+    this.isSaveLoading = true;
+
+    const submitData: Partial<Project> = {
+      ...this.submitProjectFormService.getFormValue(),
+      status: 'SUBMITTED',
+    };
+
+    let submitStream = this.projectService.submit(submitData);
+
+    if (this.submitProjectFormService.getFormValue().file) {
+      submitStream = this.filestackService
+        .upload(
+          (this.submitProjectFormService.getFormValue()
+            .file as unknown) as InputFile,
+        )
+        .pipe(
+          concatMap((response: any) => {
+            submitData.fileUrl = response.url;
+
+            return this.projectService.submit(submitData);
+          }),
+        );
+    }
+
+    submitStream
+      .pipe(
+        tap((project) => {
+          console.log({ project });
+          this.isSaveLoading = false;
+        }),
+        delay(500),
+        tap((_) => this.onCancel()),
+        catchError((error) => {
+          this.errorMessage = error.message;
+          this.isSaveLoading = false;
+          return error;
+        }),
+      )
+      .subscribe();
+  }
+
+  onCancel(): void {
+    this.isModalVisible = false;
   }
 }

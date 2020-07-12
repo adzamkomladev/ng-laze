@@ -17,18 +17,26 @@ import { NzMentionModule } from 'ng-zorro-antd/mention';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 import { FilestackModule } from '@filestack/angular';
 
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 import { ProjectResolverService } from '../services/project-resolver.service';
 import { UsersResolverService } from '../services/users-resolver.service';
+import { SubmitProjectFormService } from './services/submit-project-form.service';
 
 import { ProjectComponent } from './project.component';
 import { DetailsCardComponent } from './components/details-card/details-card.component';
+import { SubmitProjectFormComponent } from './components/submit-project-form/submit-project-form.component';
 
 @NgModule({
-  declarations: [ProjectComponent, DetailsCardComponent],
+  declarations: [
+    ProjectComponent,
+    DetailsCardComponent,
+    SubmitProjectFormComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -59,6 +67,9 @@ import { DetailsCardComponent } from './components/details-card/details-card.com
     NzDropDownModule,
     NzInputNumberModule,
     FilestackModule,
+    NzModalModule,
+    NzAlertModule,
   ],
+  providers: [SubmitProjectFormService],
 })
 export class ProjectModule {}

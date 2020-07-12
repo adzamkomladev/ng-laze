@@ -11,5 +11,21 @@
   (submitForm)="onSubmit($event)"
   [isSaveLoading]="isSaveLoading"
 ></laze-details-card>
-<pre>{{ currentUser | json }}</pre>
-<pre>{{ selectedProject | json }}</pre>
+
+<nz-modal
+  [(nzVisible)]="isModalVisible"
+  nzTitle="Submit project"
+  (nzOnCancel)="onCancel()"
+  (nzOnOk)="onSubmitProject()"
+  [nzOkLoading]="isModalSaveLoading"
+>
+  <nz-alert
+    class="auth-form-margin"
+    *ngIf="errorMessage"
+    nzType="error"
+    nzCloseable
+    nzMessage="Project submission error"
+    [nzDescription]="errorMessage"
+  ></nz-alert>
+  <laze-submit-project-form *ngIf="isModalVisible"></laze-submit-project-form>
+</nz-modal>

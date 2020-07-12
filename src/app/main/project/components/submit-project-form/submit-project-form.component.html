@@ -1,0 +1,36 @@
+<form nz-form [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="submit-text" nz-typography>
+      <strong>Submit Text</strong>
+    </nz-form-label>
+    <nz-form-control
+      nzHasFeedback
+      nzValidatingTip="Validating..."
+      [nzErrorTip]="submitTextErrorTemplate"
+    >
+      <textarea
+        id="submit-text"
+        nz-input
+        rows="4"
+        formControlName="submitText"
+        placeholder="Project Submit text"
+      ></textarea>
+
+      <ng-template #submitTextErrorTemplate let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          Please input project submit text!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="24" nzFor="file" nz-typography>
+      <strong>Submit file</strong>
+    </nz-form-label>
+    <nz-form-control>
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+        <button nz-button><i nz-icon nzType="upload"></i>Select File</button>
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+</form>
