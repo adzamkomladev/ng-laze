@@ -1,0 +1,41 @@
+.top-cards > nz-card:last-of-type {
+  background-color: #337357;
+  color: #ffffff;
+}
+.top-cards > nz-card:last-of-type p.card-title {
+  color: #ffffff;
+}
+nz-card p.card-title {
+  font-weight: bold;
+  font-size: 12px;
+  color: #b8b8b8;
+}
+
+nz-card .project-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+}
+
+nz-card .buttons {
+  margin-top: 28px;
+}
+
+nz-card .m-2 {
+  margin-bottom: 14px;
+}
+
+nz-card .price-text > span:first-of-type {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+  padding-right: 10px;
+}
+
+nz-card .price-text > span:last-of-type {
+  font-weight: bold;
+}
+
+button {
+  margin-right: 12px;
+}

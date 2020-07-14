@@ -117,7 +117,7 @@ export class DetailsCardComponent implements OnInit {
       this.file = file;
       return false;
     };
-    this.formatterCedi = (value) => `$ ${value}`;
-    this.parserCedi = (value) => Number(value.replace('$ ', ''));
+    this.formatterCedi = (value) => `GH₵ ${value}`;
+    this.parserCedi = (value) => Number(value.replace('GH₵ ', ''));
   }
 }
