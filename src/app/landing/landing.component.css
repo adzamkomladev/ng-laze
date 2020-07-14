@@ -1,5 +1,4 @@
 .top-container {
-  background-color: #f4f4f9;
   padding: 32px;
 }
 
@@ -34,6 +33,7 @@
 .functions-container {
   text-align: center;
   padding: 32px;
+  background-color: #f4f4f9;
 }
 
 .functions-container > div > p:nth-of-type(1) {
@@ -179,6 +179,7 @@ footer .bottom {
 @media (min-width: 992px) {
   .jumbotron-container > .pic-container > img {
     display: block;
+    align-self: center;
     transform: translateY(0px);
     animation: float 3.5s ease-in-out infinite;
   }
