@@ -39,3 +39,17 @@ nz-card .price-text > span:last-of-type {
 button {
   margin-right: 12px;
 }
+
+.project-cards {
+  margin: 36px 0;
+}
+
+.project-cards > laze-project-card {
+  width: 280px;
+  transform: translateY(0px);
+  transition : all 0.4s ease-in-out;
+}
+
+.project-cards > laze-project-card:hover {
+  transform: translateY(-12px);
+}

@@ -1,17 +1,17 @@
 <div nz-row nzType="flex" nzJustify="space-between" class="top-cards">
   <nz-card nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="12" nzXl="12">
     <div nz-row nzType="flex" nzAlign="top" nzJustify="space-between">
-      <div class="m-2" nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="15" nzXl="15">
+      <div class="m-2" nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="13" nzXl="13">
         <p class="card-title">Top project</p>
         <span class="project-title">Title of project</span><br />
-        <div cl>
+        <div>
           by: username|fullname
           <button nz-button nzType="link">
             <i nz-icon nzType="arrow-right" nzTheme="outline"></i>
           </button>
         </div>
       </div>
-      <div class="m-2" nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="7" nzXl="7">
+      <div class="m-2" nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="9" nzXl="9">
         <p class="card-title">Project price</p>
         <p class="price-text">
           <span>140.00</span>
@@ -41,4 +41,11 @@
       </div>
     </div>
   </nz-card>
+</div>
+<div class="project-cards" nz-row nzType="flex" nzJustify="space-between">
+  <laze-project-card
+    nz-col
+    *ngFor="let project of allProjects | topProjects | slice: 0:4"
+    [project]="project"
+  ></laze-project-card>
 </div>

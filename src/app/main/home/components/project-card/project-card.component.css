@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+.top-row > div:first-of-type > span:first-of-type {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+.top-row > div:first-of-type > span:last-of-type {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.top-row > div {
+  margin-bottom: 12px;
+}
+
+.price-text {
+  margin-bottom: 0;
+}
+
+.price-text > span:first-of-type {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  padding-right: 12px;
+}
+
+.price-text > span:last-of-type {
+  font-weight: bold;
+  font-size: 12px;
+}
