@@ -8,6 +8,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 import { CurrentUserResolverService } from '../services/current-user-resolver.service';
 import { UsersResolverService } from '../services/users-resolver.service';
@@ -38,6 +39,7 @@ import { TopProjectsPipe } from './pipes/top-projects.pipe';
     NzIconModule,
     NzAvatarModule,
     NzPageHeaderModule,
+    NzTableModule,
   ],
 })
 export class HomeModule {}

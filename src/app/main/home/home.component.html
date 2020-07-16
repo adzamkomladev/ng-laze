@@ -51,3 +51,47 @@
     [project]="project"
   ></laze-project-card>
 </div>
+<div nz-row class="table-cards">
+  <div
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="11"
+    nzLg="13"
+    nzXl="13"
+    class="project-table-card"
+  >
+    <h3>Recent projects</h3>
+    <nz-table #basicTable [nzData]="userProjects">
+      <thead>
+        <tr>
+          <th nz-typography><strong>Deadline</strong></th>
+          <th nz-typography><strong>Project title</strong></th>
+          <th nz-typography><strong>Owner</strong></th>
+          <th nz-typography><strong>Price (GH₵)</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let data of basicTable.data"
+          [routerLink]="['/main', 'project', data.id]"
+        >
+          <td>{{ data.deadline | date }}</td>
+          <td>{{ data.title }}</td>
+          <td>{{ data.owner.fullName || data.owner.username }}</td>
+          <td>{{ data.price || "N/A" }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+
+  <div
+    nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="11"
+    nzLg="9"
+    nzXl="9"
+    class="projects-type-card"
+  ></div>
+</div>
