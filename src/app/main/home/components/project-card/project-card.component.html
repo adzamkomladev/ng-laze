@@ -11,7 +11,7 @@
       <br />
       <span>
         {{ project.owner.fullName || project.owner.username }} &nbsp;&nbsp;
-        <a [routerLink]="['main', 'user', project.ownerId]">
+        <a [routerLink]="['/main', 'user', project.ownerId]">
           <i nz-icon nzType="select" nzTheme="outline"></i>
         </a>
       </span>

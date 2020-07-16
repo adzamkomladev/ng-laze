@@ -1,3 +1,5 @@
+<nz-page-header nzTitle="Dashboard" nzSubtitle="Home details"></nz-page-header>
+
 <div nz-row nzType="flex" nzJustify="space-between" class="top-cards">
   <nz-card nz-col nzXs="24" nzSm="24" nzMd="11" nzLg="12" nzXl="12">
     <div nz-row nzType="flex" nzAlign="top" nzJustify="space-between">
@@ -45,7 +47,7 @@
 <div class="project-cards" nz-row nzType="flex" nzJustify="space-between">
   <laze-project-card
     nz-col
-    *ngFor="let project of allProjects | slice: 0:4"
+    *ngFor="let project of allProjects | topProjects | slice: 0:4"
     [project]="project"
   ></laze-project-card>
 </div>
