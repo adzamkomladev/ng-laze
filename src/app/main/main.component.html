@@ -36,6 +36,12 @@
           <span>My projects</span>
         </li>
         <li nz-menu-item nzMatchRouter>
+          <a [routerLink]="['chats']">
+            <i nz-icon nzType="message"></i>
+            <span>Chats</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
           <a [routerLink]="['users']">
             <i nz-icon nzType="team"></i>
             <span>Users</span>
